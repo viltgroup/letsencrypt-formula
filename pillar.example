@@ -16,5 +16,5 @@ letsencrypt:
       - mail.example.com
     intranet:
       - intranet.example.com
-  git: git  # only set it, if u don't want bto use git formular
+  git: git  # only set it, if u don't want to use git formular
   
