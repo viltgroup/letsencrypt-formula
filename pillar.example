@@ -16,6 +16,7 @@ letsencrypt:
       - mail.example.com
     intranet:
       - intranet.example.com
-  # optional
+
+  # optional if you need it
   extra_pkg:
     - git

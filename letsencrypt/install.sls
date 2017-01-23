@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
 # vim: ft=sls
-
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
-/opt/letsencrypt:
-  file.directory:
-    - mode: 755
-    - makedirs: True
 
 letsencrypt-client-git:
   git.latest:
@@ -16,10 +11,10 @@ letsencrypt-client-git:
     - requires:
        - pkg: {{ letsencrypt.extra_pkg }}
 {% endif %}
-
 {% if salt['pillar.get']('letsencrypt:extra_pkg', False) %}
 letsencrypt_extra_package_install:
  pkg.latest:
     - pkg: {{ letsencrypt.extra_pkg }}
-
 {% endif %}
+
+
