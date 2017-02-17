@@ -1,0 +1,43 @@
+---
+driver:
+  name: vagrant
+  vm_hostname: letsencrypttest
+  customize:
+    memory: 1024
+  network:
+    - ["private_network", { ip: "192.168.33.33" }]
+
+provisioner:
+  name: salt_solo
+  formula: letsencrypt
+  pillars:
+    top.sls:
+      base:
+        "*":
+          - letsencrypt
+  state_top:
+    base:
+      "*":
+        - letsencrypt.install
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    provisioner:
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - letsencrypt
+        letsencrypt.sls:
+          letsencrypt:
+            config: |
+              server = https://acme-v01.api.letsencrypt.org/directory
+              authenticator = standalone
+              agree-tos = True
+              renew-by-default = True
+            domainsets:
+              www:
+                - letsencrypttest.acme.com

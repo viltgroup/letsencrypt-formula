@@ -12,5 +12,3 @@ letsencrypt-client-git:
     - force_reset: True
     - require:
       - pkg: {{ letsencrypt.git_package }}
-
-
