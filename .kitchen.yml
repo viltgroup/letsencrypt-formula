@@ -1,7 +1,7 @@
 ---
 driver:
   name: vagrant
-  vm_hostname: letsencrypttest
+  vm_hostname: letsencrypttest.acme.com
   customize:
     memory: 1024
   network:
@@ -21,7 +21,9 @@ provisioner:
         - letsencrypt.install
 
 platforms:
-  - name: ubuntu-14.04
+  - name: ubuntu/xenial64
+  - name: debian/jessie64
+  - name: centos/7
 
 suites:
   - name: default
