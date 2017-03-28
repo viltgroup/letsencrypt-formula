@@ -15,6 +15,11 @@ letsencrypt:
     webroot-path = /var/lib/www
     agree-tos = True
     renew-by-default = True
+  config_dir:
+    path: /etc/letsencrypt
+    user: root
+    group: root
+    mode: 755
   domainsets:
     www:
       - example.com

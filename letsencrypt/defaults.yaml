@@ -6,6 +6,11 @@ letsencrypt:
     - python-certbot-apache
   service: certbot.timer
   cli_install_dir: /opt/letsencrypt
+  config_dir:
+    path: /etc/letsencrypt
+    user: root
+    group: root
+    mode: 755
   post_renew:
     cmds:
   cron:
