@@ -16,6 +16,7 @@ letsencrypt:
       - mail.example.com
     intranet:
       - intranet.example.com
-  post-renew-cmds:
-    - service nginx reload
-    - service haproxy reload
+  post_renew:
+    cmds:
+      - service nginx reload
+      - service haproxy reload

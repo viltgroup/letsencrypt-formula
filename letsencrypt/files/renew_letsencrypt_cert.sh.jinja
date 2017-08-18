@@ -15,7 +15,7 @@ then
         /etc/letsencrypt/live/${COMMON_NAME}/privkey.pem \
         > /etc/letsencrypt/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
     chmod 600 /etc/letsencrypt/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
-    {% for cmd in letsencrypt.post-renew-cmds %}
+    {%- for cmd in letsencrypt.post_renew.cmds %}
     {{ cmd }}
-    {% endfor %}
+    {%- endfor %}
 fi
