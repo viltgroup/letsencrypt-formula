@@ -2,3 +2,5 @@
 # vim: ft=yaml
 letsencrypt:
   cli_install_dir: /opt/letsencrypt
+  post_renew:
+    cmds:
