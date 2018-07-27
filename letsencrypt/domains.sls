@@ -3,8 +3,17 @@
 
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 
+{% if letsencrypt.use_package %}
+  {% set check_cert_cmd = '/usr/bin/certbot' %}
+  {% set renew_cert_cmd = '/usr/bin/certbot renew' %}
+  {% set create_cert_cmd = '/usr/bin/certbot' %}
 
-/usr/local/bin/check_letsencrypt_cert.sh:
+{% else %}
+  {% set check_cert_cmd = '/usr/local/bin/check_letsencrypt_cert.sh' %}
+  {% set renew_cert_cmd = '/usr/local/bin/renew_letsencrypt_cert.sh' %}
+  {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/letsencrypt-auto' %}
+
+{{ check_cert_cmd }}:
   file.managed:
     - mode: 755
     - contents: |
@@ -22,36 +31,39 @@
         [ "$REMAINING" -gt "30" ] || exit 1
         echo Domains $@ are in cert and cert is valid for $REMAINING days
 
-/usr/local/bin/renew_letsencrypt_cert.sh:
+{{ renew_cert_cmd }}:
   file.managed:
     - template: jinja
     - source: salt://letsencrypt/files/renew_letsencrypt_cert.sh.jinja
     - mode: 755
     - require:
-      - file: /usr/local/bin/check_letsencrypt_cert.sh
+      - file: {{ check_cert_cmd }}
+{% endif %}
 
-{%
-  for setname, domainlist in salt['pillar.get'](
-    'letsencrypt:domainsets'
-  ).iteritems()
-%}
+{% for setname, domainlist in letsencrypt.domainsets.items() %}
 
 create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
   cmd.run:
-    - unless: /usr/local/bin/check_letsencrypt_cert.sh {{ domainlist|join(' ') }}
-    - name: {{
-          letsencrypt.cli_install_dir
-        }}/letsencrypt-auto --quiet -d {{ domainlist|join(' -d ') }} certonly --non-interactive
+    - unless: {{ check_cert_cmd }} {{ domainlist|join(' ') }}
+    - name: {{ create_cert_cmd }} --quiet -d {{ domainlist|join(' -d ') }} certonly --non-interactive
     - cwd: {{ letsencrypt.cli_install_dir }}
     - require:
+      {% if letsencrypt.use_package %}
+      - pkg: letsencrypt-client
+      {% else %}
+      - file: {{ check_cert_cmd }}
+      {% endif %}
       - file: letsencrypt-config
-      - file: /usr/local/bin/check_letsencrypt_cert.sh
+
+# Letsencrpyt package uses a systemd service/timer combination
+# or recommends to renew twice a day 
+  {% if not letsencrypt.package %}
 
 # domainlist[0] represents the "CommonName", and the rest
 # represent SubjectAlternativeNames
 letsencrypt-crontab-{{ setname }}-{{ domainlist[0] }}:
   cron.present:
-    - name: /usr/local/bin/renew_letsencrypt_cert.sh {{ domainlist|join(' ') }}
+    - name: {{ renew_cert_cmd }} {{ domainlist|join(' ') }}
     - month: '*'
     - minute: random
     - hour: random
@@ -59,7 +71,12 @@ letsencrypt-crontab-{{ setname }}-{{ domainlist[0] }}:
     - identifier: letsencrypt-{{ setname }}-{{ domainlist[0] }}
     - require:
       - cmd: create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}
-      - file: /usr/local/bin/renew_letsencrypt_cert.sh
+      {% if letsencrypt.use_package %}
+      - pkg: letsencrypt-client
+      {% else %}
+      - file: {{ renew_cert_cmd }}
+      {% endif %}
+  {% endif %}
 
 create-fullchain-privkey-pem-for-{{ domainlist[0] }}:
   cmd.run:

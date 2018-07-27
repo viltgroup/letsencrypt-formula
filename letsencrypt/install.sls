@@ -3,8 +3,13 @@
 
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 
-letsencrypt-client-git:
+letsencrypt-client:
+  {% if letsencrypt.use_package %}
+  pkg.installed:
+    - name: {{ letsencrypt.pkg }}
+  {% else %}
   git.latest:
     - name: https://github.com/letsencrypt/letsencrypt
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
+  {% endif %}

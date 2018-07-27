@@ -4,4 +4,5 @@
 include:
   - letsencrypt.install
   - letsencrypt.config
+  - letsencrypt.service
   - letsencrypt.domains
