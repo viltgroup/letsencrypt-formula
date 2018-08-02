@@ -46,7 +46,9 @@ create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
   cmd.run:
     - unless: {{ check_cert_cmd }} {{ domainlist|join(' ') }}
     - name: {{ create_cert_cmd }} --quiet -d {{ domainlist|join(' -d ') }} certonly --non-interactive
+      {% if not letsencrypt.use_package %}
     - cwd: {{ letsencrypt.cli_install_dir }}
+      {% endif %}
     - require:
       {% if letsencrypt.use_package %}
       - pkg: letsencrypt-client
