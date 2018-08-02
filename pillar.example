@@ -2,10 +2,8 @@ letsencrypt:
   use_package: true                              # Install using packages instead of git
   pkg: python-certbot-apache                     # Package name to use. Check https://certbot.eff.org/all-instructions
                                                  # to find the correct name for the variant you want to use.
-  add_individual_crons: false                    # certbot's package uses a systemd's timer unit to try to renew the
-                                                 # certificates twice a day, so crons are not needed anymore.
 
-  cli_install_dir: /opt/letsencrypt
+  cli_install_dir: /opt/letsencrypt              # Only used for the git install method
   post_renew:
     cmds:
 

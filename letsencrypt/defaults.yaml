@@ -4,6 +4,5 @@ letsencrypt:
   use_package: true
   pkg: python-certbot-apache
   cli_install_dir: /opt/letsencrypt
-  add_individual_crons: false
   post_renew:
     cmds:
