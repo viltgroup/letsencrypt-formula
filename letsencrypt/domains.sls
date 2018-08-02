@@ -57,7 +57,7 @@ create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
 
 # Letsencrpyt package uses a systemd service/timer combination
 # or recommends to renew twice a day 
-  {% if not letsencrypt.package %}
+  {% if not letsencrypt.use_package %}
 
 # domainlist[0] represents the "CommonName", and the rest
 # represent SubjectAlternativeNames
