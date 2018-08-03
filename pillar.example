@@ -1,7 +1,8 @@
 letsencrypt:
   use_package: true                              # Install using packages instead of git
-  pkg: python-certbot-apache                     # Package name to use. Check https://certbot.eff.org/all-instructions
-                                                 # to find the correct name for the variant you want to use.
+  pkgs:                                          # A list of package/s to install. Check https://certbot.eff.org/all-instructions
+    - python-certbot-apache                      # to find the correct name for the variant you want to use. Usually, you'll
+                                                 # need a single one, but you can also add other plugins here
 
   cli_install_dir: /opt/letsencrypt              # Only used for the git install method
   post_renew:

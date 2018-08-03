@@ -1,2 +1,3 @@
 RedHat:
-  pkg: python2-certbot-apache
+  pkgs:
+    - python2-certbot-apache

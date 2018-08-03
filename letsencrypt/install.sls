@@ -6,7 +6,7 @@
 letsencrypt-client:
   {% if letsencrypt.use_package %}
   pkg.installed:
-    - name: {{ letsencrypt.pkg }}
+    - pkgs: {{ letsencrypt.pkgs }}
   {% else %}
   git.latest:
     - name: https://github.com/letsencrypt/letsencrypt
