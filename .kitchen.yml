@@ -1,0 +1,94 @@
+---
+driver:
+  name: docker
+
+driver_config:
+  use_sudo: false
+  privileged: true
+
+platforms:
+  - name: debian-9
+    driver_config:
+      provision_command:
+        - mkdir -p /run/sshd
+        - apt-get install git -y
+      run_command: /lib/systemd/systemd
+  - name: centos-7
+    driver_config:
+      image: saltstack/centos-7-minimal
+      provision_command:
+        - mkdir -p /run/sshd
+        - yum install git -y
+      run_command: /lib/systemd/systemd
+
+provisioner:
+  name: salt_solo
+  log_level: info
+  require_chef: false
+  salt_version: latest
+  formula: letsencrypt
+  salt_copy_filter:
+    - .kitchen
+    - .git
+
+  dependencies:
+    - name: apt
+      repo: git
+      source: https://github.com/saltstack-formulas/apt-formula.git
+
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - apt
+          - letsencrypt
+    apt.sls:
+      apt:
+        repositories:
+          #####
+          letsencrypt-backports:
+            distro: stretch-backports
+            url: http://deb.debian.org/debian
+            comps: [main]
+        preferences:
+          letsencrypt-backports:
+            pin: release a=stretch-backports 
+            priority: 640
+    #epel.sls:
+    #  epel:
+    #    disabled: false
+    letsencrypt.sls:
+      letsencrypt:
+        use_package: true
+        config: |
+          server: https://acme-staging.api.letsencrypt.org/directory
+          email: saltstack-letsencrypt-formula@example.com
+          authenticator: webroot
+          webroot-path: /var/www/html
+          agree-tos: true
+          renew-by-default: true
+
+suites:
+  - name: deb
+    excludes:
+      - centos-7
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - apt.repositories
+            - apt.preferences
+            - apt.update
+            - letsencrypt.install
+            - letsencrypt.service
+            - letsencrypt.config
+  - name: rpm
+    excludes:
+      - debian-9
+    provisioner:
+      state_top:
+        base:
+          '*':
+            # - epel
+            - letsencrypt.install
+            - letsencrypt.config

@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 letsencrypt:
+  use_package: true
+  pkgs: 
+    - python-certbot-apache
   cli_install_dir: /opt/letsencrypt
   post_renew:
     cmds:
