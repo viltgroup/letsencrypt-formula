@@ -6,7 +6,7 @@
 {% if letsencrypt.use_package %}
 letsencrypt-service-timer:
   service.running:
-    - name: certbot.timer
+    - name: {{ letsencrypt.service }}
     - enable: true
     - watch:
       - pkg: letsencrypt-client
