@@ -29,3 +29,7 @@ letsencrypt:
     cmds:
       - service nginx reload
       - service haproxy reload
+  cron:
+    minute: 10
+    hour: 2
+    dayweek: 1

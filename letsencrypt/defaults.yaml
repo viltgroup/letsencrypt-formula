@@ -8,3 +8,7 @@ letsencrypt:
   cli_install_dir: /opt/letsencrypt
   post_renew:
     cmds:
+  cron:
+    minute: random
+    hour: random
+    dayweek: '*'
