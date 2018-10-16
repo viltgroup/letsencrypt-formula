@@ -8,7 +8,7 @@ do
     JOINED+=" -d $DOMAIN"
 done
 
-if /usr/local/bin/check_letsencrypt_cert.sh "$@" > /dev/null
+if ! /usr/local/bin/check_letsencrypt_cert.sh "$@" > /dev/null
 then
     {{ letsencrypt.cli_install_dir }}/letsencrypt-auto certonly $JOINED --non-interactive || exit 1
     cat /etc/letsencrypt/live/${COMMON_NAME}/fullchain.pem \
