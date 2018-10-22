@@ -5,10 +5,15 @@ letsencrypt_dependencies:
   pkg.installed:
     - name: {{ letsencrypt.git_package }}
 
-letsencrypt-client-git:
+letsencrypt-client:
+  {% if letsencrypt.use_package %}
+  pkg.installed:
+    - pkgs: {{ letsencrypt.pkgs }}
+  {% else %}
   git.latest:
     - name: https://github.com/letsencrypt/letsencrypt
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
     - require:
       - pkg: {{ letsencrypt.git_package }}
+  {% endif %}

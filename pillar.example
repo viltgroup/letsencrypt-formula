@@ -1,4 +1,11 @@
 letsencrypt:
+  use_package: true                              # Install using packages instead of git
+  pkgs:                                          # A list of package/s to install. Check https://certbot.eff.org/all-instructions
+    - python-certbot-apache                      # to find the correct name for the variant you want to use. Usually, you'll
+                                                 # need a single one, but you can also add other plugins here
+
+  cli_install_dir: /opt/letsencrypt              # Only used for the git install method
+
   config: |
     server = https://acme-v01.api.letsencrypt.org/directory
     email = webmaster@example.com
@@ -6,6 +13,11 @@ letsencrypt:
     webroot-path = /var/lib/www
     agree-tos = True
     renew-by-default = True
+  config_dir:
+    path: /etc/letsencrypt
+    user: root
+    group: root
+    mode: 755
   domainsets:
     www:
       - example.com
@@ -16,3 +28,11 @@ letsencrypt:
       - mail.example.com
     intranet:
       - intranet.example.com
+  post_renew:
+    cmds:
+      - service nginx reload
+      - service haproxy reload
+  cron:
+    minute: 10
+    hour: 2
+    dayweek: 1

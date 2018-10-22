@@ -1,8 +1,11 @@
 source "http://rubygems.org"
 
-gem "test-kitchen", '>=1.9.1'
 gem "kitchen-vagrant"
 gem "unf"
-gem "kitchen-salt", ">=0.0.23"
-gem "kitchen-docker"
 gem "kitchen-ec2"
+
+gem "test-kitchen", '>=1.20.0'
+gem "kitchen-docker"
+gem "kitchen-salt", ">=0.1.0"
+gem "kitchen-inspec"
+
