@@ -1,67 +1,36 @@
 ---
 driver:
-  name: vagrant
-  vm_hostname: letsencrypttest.acme.com
-  customize:
-    memory: 1024
-  network:
-    - ["private_network", { ip: "192.168.33.33" }]
-
-provisioner:
-  name: salt_solo
-  formula: letsencrypt
-  pillars:
-    top.sls:
-      base:
-        "*":
-          - letsencrypt
-  state_top:
-    base:
-      "*":
-        - letsencrypt.install
-
-platforms:
-  - name: ubuntu/xenial64
-  - name: debian/jessie64
-  - name: centos/7
-
-suites:
-  - name: default
-    provisioner:
-      pillars:
-        top.sls:
-          base:
-            '*':
-              - letsencrypt
-        letsencrypt.sls:
-          letsencrypt:
-            config: |
-              server = https://acme-v01.api.letsencrypt.org/directory
-              authenticator = standalone
-              agree-tos = True
-              renew-by-default = True
-            domainsets:
-              www:
-                - letsencrypttest.acme.com
   name: docker
+  hostname: letsencrypt-formula.example.com
 
 driver_config:
   use_sudo: false
   privileged: true
 
+verifier:
+  name: inspec
+
 platforms:
+  - name: ubuntu-16.04
+    driver_config:
+      provision_command:
+        - mkdir -p /run/sshd
+      run_command: /lib/systemd/systemd
+  - name: ubuntu-18.04
+    driver_config:
+      provision_command:
+        - mkdir -p /run/sshd
+      run_command: /lib/systemd/systemd
   - name: debian-9
     driver_config:
       provision_command:
         - mkdir -p /run/sshd
-        - apt-get install git -y
       run_command: /lib/systemd/systemd
   - name: centos-7
     driver_config:
       image: saltstack/centos-7-minimal
       provision_command:
         - mkdir -p /run/sshd
-        - yum install git -y
       run_command: /lib/systemd/systemd
 
 provisioner:
@@ -73,6 +42,11 @@ provisioner:
   salt_copy_filter:
     - .kitchen
     - .git
+
+  state_top:
+    base:
+      "*":
+        - letsencrypt.install
 
   dependencies:
     - name: apt
@@ -95,9 +69,9 @@ provisioner:
             comps: [main]
         preferences:
           letsencrypt-backports:
-            pin: release a=stretch-backports 
+            pin: release a=stretch-backports
             priority: 640
-    #epel.sls:
+    # epel.sls:
     #  epel:
     #    disabled: false
     letsencrypt.sls:
@@ -112,11 +86,40 @@ provisioner:
           renew-by-default: true
 
 suites:
+  - name: default
+    excludes:
+      - centos-7
+      - debian-9
+    verifier:
+      inspec_tests:
+        - test/integration/default
+    provisioner:
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - letsencrypt
+        letsencrypt.sls:
+          letsencrypt:
+            use_package: false
+            config: |
+              server = https://acme-staging.api.letsencrypt.org/directory
+              authenticator = standalone
+              agree-tos = True
+              renew-by-default = True
+            domainsets:
+              www:
+                - letsencrypt-formula.example.com
   - name: deb
     excludes:
       - centos-7
+      - ubuntu-18.04
+      - ubuntu-16.04
+    verifier:
+      inspec_tests:
+        - test/integration/deb
     provisioner:
-      state_top:
+      top.sls:
         base:
           '*':
             - apt.repositories
@@ -125,9 +128,27 @@ suites:
             - letsencrypt.install
             - letsencrypt.service
             - letsencrypt.config
+      apt.sls:
+        apt:
+          repositories:
+            #####
+            letsencrypt-backports:
+              distro: stretch-backports
+              url: http://deb.debian.org/debian
+              comps: [main]
+            preferences:
+              letsencrypt-backports:
+                pin: release a=stretch-backports
+                priority: 640
+
   - name: rpm
     excludes:
       - debian-9
+      - ubuntu-16.04
+      - ubuntu-18.04
+    verifier:
+      inspec_tests:
+        - test/integration/rpm
     provisioner:
       state_top:
         base:

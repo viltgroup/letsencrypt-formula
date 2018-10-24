@@ -2,7 +2,7 @@
 # vim: ft=yaml
 letsencrypt:
   use_package: true
-  pkgs: 
+  pkgs:
     - python-certbot-apache
   service: certbot.timer
   cli_install_dir: /opt/letsencrypt
