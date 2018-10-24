@@ -54,3 +54,4 @@ Manages /etc/letsencrypt/cli.ini config file.
 
 Creates a certificate with the domains in each domain set (letsencrypt:domainsets in pillar). Letsencrypt uses a relatively short validity of 90 days.
 Therefore, a cron job for automatic renewal every 60 days is installed for each domain set as well.
+
