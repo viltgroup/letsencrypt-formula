@@ -1,8 +1,3 @@
-require 'serverspec'
-
-# Required by serverspec
-set :backend, :exec
-
 describe file('/opt/letsencrypt') do
     it { should be_directory }
     it { should be_owned_by 'root' }

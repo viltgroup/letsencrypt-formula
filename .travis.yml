@@ -7,10 +7,11 @@ services:
 
 env:
   matrix:
-    - INSTANCE=debian-9
-    - INSTANCE=centos-7
-    - INSTANCE=default-ubuntu-1604
-    - INSTANCE=default-ubuntu-1804
+    - INSTANCE=git-ubuntu-1604
+    - INSTANCE=git-ubuntu-1804
+    - INSTANCE=git-centos-7
+    - INSTANCE=deb-debian-9
+    - INSTANCE=rpm-centos-7
 
 before_install:
   - bundle install
