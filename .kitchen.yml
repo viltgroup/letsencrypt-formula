@@ -58,6 +58,7 @@ suites:
         letsencrypt.sls:
           letsencrypt:
             use_package: false
+            version: 0.26.x
             config: |
               server = https://acme-staging.api.letsencrypt.org/directory
               email = saltstack-letsencrypt-formula@example.com

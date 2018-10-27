@@ -4,6 +4,8 @@ letsencrypt-formula
 
 Creates certificates and manages renewal using the letsencrypt service.
 
+.. image:: https://travis-ci.org/saltstack-formulas/letsencrypt-formula.svg?branch=master
+
 .. note::
 
     See the full `Salt Formulas installation and usage instructions

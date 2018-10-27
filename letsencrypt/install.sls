@@ -9,9 +9,15 @@ letsencrypt-client:
   {% else %}
   pkg.installed:
     - name: git
-
+  {% if letsencrypt.version is defined and letsencrypt.version|length %}
+  git.cloned:
+    - name: https://github.com/letsencrypt/letsencrypt
+    - branch: {{ letsencrypt.version }}
+    - target: {{ letsencrypt.cli_install_dir }}
+  {% else %}
   git.latest:
     - name: https://github.com/letsencrypt/letsencrypt
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
+  {% endif %}
   {% endif %}
