@@ -13,17 +13,27 @@ platforms:
   - name: ubuntu-16.04
   - name: ubuntu-18.04
   - name: debian-9
+    driver_config:
+      provision_command:
+        - apt-get install -y git
   - name: centos-7
 
 provisioner:
   name: salt_solo
   log_level: info
   require_chef: false
+  salt_install: bootstrap
   salt_version: latest
   formula: letsencrypt
   salt_copy_filter:
     - .kitchen
     - .git
+
+verifier:
+  name: inspec
+  sudo: true
+  reporter:
+    - cli
 
   state_top:
     base:
@@ -64,6 +74,7 @@ provisioner:
           agree-tos: true
           renew-by-default: true
 
+
 verifier:
   name: inspec
   sudo: true
@@ -79,6 +90,13 @@ suites:
       inspec_tests:
         - test/integration/git
     provisioner:
+      state_top:
+        base:
+          '*':
+            - letsencrypt.install
+            - letsencrypt.config
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
+                                  # if you leave this as it is, the state failes
       pillars:
         top.sls:
           base:
@@ -87,8 +105,10 @@ suites:
         letsencrypt.sls:
           letsencrypt:
             use_package: false
+            version: 0.26.x
             config: |
               server = https://acme-staging.api.letsencrypt.org/directory
+              email = saltstack-letsencrypt-formula@example.com
               authenticator = standalone
               agree-tos = True
               renew-by-default = True
@@ -104,27 +124,54 @@ suites:
       inspec_tests:
         - test/integration/deb
     provisioner:
-      top.sls:
+      dependencies:
+        - name: apt
+          repo: git
+          source: https://github.com/saltstack-formulas/apt-formula.git
+      state_top:
         base:
-          '*':
+          "*":
             - apt.repositories
             - apt.preferences
             - apt.update
             - letsencrypt.install
-            - letsencrypt.service
             - letsencrypt.config
-      apt.sls:
-        apt:
-          repositories:
-            #####
-            letsencrypt-backports:
-              distro: stretch-backports
-              url: http://deb.debian.org/debian
-              comps: [main]
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
+                                  # if you leave this as it is, the state fails
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - apt
+              - letsencrypt
+        apt.sls:
+          apt:
+            repositories:
+              #####
+              letsencrypt-backports:
+                distro: stretch-backports
+                url: http://deb.debian.org/debian
+                comps: [main]
             preferences:
               letsencrypt-backports:
                 pin: release a=stretch-backports
                 priority: 640
+        # epel.sls:
+        #  epel:
+        #    disabled: false
+        letsencrypt.sls:
+          letsencrypt:
+            use_package: true
+            config: |
+              server = https://acme-staging.api.letsencrypt.org/directory
+              email = saltstack-letsencrypt-formula@example.com
+              authenticator = webroot
+              webroot-path = /var/www/html
+              agree-tos = true
+              renew-by-default = true
+            domainsets:
+              www:
+                - letsencrypt-formula.example.com
 
   - name: rpm
     excludes:
@@ -140,3 +187,23 @@ suites:
           '*':
             - letsencrypt.install
             - letsencrypt.config
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
+                                  # if you leave this as it is, the state fails
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - letsencrypt
+        letsencrypt.sls:
+          letsencrypt:
+            use_package: true
+            config: |
+              server = https://acme-staging.api.letsencrypt.org/directory
+              email = saltstack-letsencrypt-formula@example.com
+              authenticator = webroot
+              webroot-path = /var/www/html
+              agree-tos = true
+              renew-by-default = true
+            domainsets:
+              www:
+                - letsencrypt-formula.example.com

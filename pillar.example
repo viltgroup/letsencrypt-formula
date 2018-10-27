@@ -5,6 +5,8 @@ letsencrypt:
                                                  # need a single one, but you can also add other plugins here
 
   cli_install_dir: /opt/letsencrypt              # Only used for the git install method
+  version: 0.26.x                                # if use_packe false and if you want to have specific version
+                                                 # of certbot you can enable it without version git.latest is used
 
   config: |
     server = https://acme-v01.api.letsencrypt.org/directory
