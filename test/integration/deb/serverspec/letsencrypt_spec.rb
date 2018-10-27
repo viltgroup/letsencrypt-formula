@@ -23,3 +23,22 @@ describe file(certbot) do
   it { should be_owned_by 'root' }
   it { should be_grouped_into 'root' }
 end
+
+describe file('/etc/apt/preferences.d/letsencrypt-backports') do
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    it { should be_readable }
+    its('size') { should be > 1 }
+    its('content') { should match 'Pin: release a=stretch-backports' }
+    its('content') { should match 'Pin-Priority: 640' }
+end
+
+describe file('/etc/apt/sources.list.d/letsencrypt-backports-binary.list') do
+    it { should be_file }
+    it { should be_owned_by 'root' }
+    it { should be_grouped_into 'root' }
+    it { should be_readable }
+    its('size') { should be > 1 }
+    its('content') { should match 'deb http://deb.debian.org/debian stretch-backports main' }
+end

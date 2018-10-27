@@ -6,32 +6,17 @@ driver:
 driver_config:
   use_sudo: false
   privileged: true
-
-verifier:
-  name: inspec
+  provision_command: mkdir -p /run/sshd
+  run_command: /lib/systemd/systemd
 
 platforms:
   - name: ubuntu-16.04
-    driver_config:
-      provision_command:
-        - mkdir -p /run/sshd
-      run_command: /lib/systemd/systemd
   - name: ubuntu-18.04
-    driver_config:
-      provision_command:
-        - mkdir -p /run/sshd
-      run_command: /lib/systemd/systemd
   - name: debian-9
     driver_config:
       provision_command:
-        - mkdir -p /run/sshd
-      run_command: /lib/systemd/systemd
+        - apt-get install -y git
   - name: centos-7
-    driver_config:
-      image: saltstack/centos-7-minimal
-      provision_command:
-        - mkdir -p /run/sshd
-      run_command: /lib/systemd/systemd
 
 provisioner:
   name: salt_solo
@@ -44,20 +29,26 @@ provisioner:
     - .kitchen
     - .git
 
+verifier:
+  name: inspec
+  sudo: true
+  reporter:
+    - cli
+
 suites:
-  - name: default
+  - name: git
     excludes:
-      - centos-7
       - debian-9
     verifier:
       inspec_tests:
-        - test/integration/default
+        - test/integration/git
     provisioner:
       state_top:
         base:
           '*':
             - letsencrypt.install
-            - letsencrypt.config  # Please note that you have to add a valide domain name and a valid email to tests this
+            - letsencrypt.config
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
                                   # if you leave this as it is, the state failes
       pillars:
         top.sls:
@@ -79,8 +70,8 @@ suites:
   - name: deb
     excludes:
       - centos-7
-      - ubuntu-18.04
       - ubuntu-16.04
+      - ubuntu-18.04
     verifier:
       inspec_tests:
         - test/integration/deb
@@ -92,13 +83,18 @@ suites:
       state_top:
         base:
           "*":
+            - apt.repositories
+            - apt.preferences
+            - apt.update
             - letsencrypt.install
-            - letsencrypt.config  # Please note that you have to add a valide domain name and a valid email to tests this
-                                  # if you leave this as it is, the state failes
+            - letsencrypt.config
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
+                                  # if you leave this as it is, the state fails
       pillars:
         top.sls:
           base:
             '*':
+              - apt
               - letsencrypt
         apt.sls:
           apt:
@@ -143,8 +139,9 @@ suites:
           '*':
             # - epel
             - letsencrypt.install
-            - letsencrypt.config  # Please note that you have to add a valide domain name and a valid email to tests this
-                                  # if you leave this as it is, the state failes
+            - letsencrypt.config
+#            - letsencrypt.domains # Please note that you have to add a valide domain name and a valid email to tests this
+                                  # if you leave this as it is, the state fails
       pillars:
         top.sls:
           base:
