@@ -1,3 +1,4 @@
+
 describe file('/opt/letsencrypt') do
  it { should_not exist }
 end
@@ -8,6 +9,7 @@ describe file('/etc/letsencrypt/cli.ini') do
     it { should be_grouped_into 'root' }
     it { should be_readable }
     its('size') { should be > 1 }
+
     its('content') { should match 'server = https://acme-staging.api.letsencrypt.org/directory' }
     its('content') { should match 'authenticator = webroot' }
 end

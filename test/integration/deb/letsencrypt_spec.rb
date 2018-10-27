@@ -12,6 +12,7 @@ describe file('/etc/letsencrypt/cli.ini') do
     its('content') { should match 'authenticator = webroot' }
 end
 
+
 describe file('/usr/bin/letsencrypt') do
   it { should be_symlink }
 end
