@@ -1,8 +1,3 @@
-require 'serverspec'
-
-# Required by serverspec
-set :backend, :exec
-
 describe file('/usr/bin/letsencrypt') do
   it { should be_symlink }
 end
