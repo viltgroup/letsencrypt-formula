@@ -1,4 +1,21 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
 letsencrypt:
+  use_package: true
+  pkgs:
+    - python-certbot-apache
+  service: certbot.timer
   cli_install_dir: /opt/letsencrypt
+#  version: 0.26.x # if use_packe false and if you want to have specific version of certbot you can enable it
+  config_dir:
+    path: /etc/letsencrypt
+    user: root
+    group: root
+    mode: 755
+  post_renew:
+    cmds:
+  cron:
+    minute: random
+    hour: random
+    dayweek: '*'
+
