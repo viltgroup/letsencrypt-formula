@@ -3,7 +3,7 @@
 COMMON_NAME="$1"
 
 {{ letsencrypt.cli_install_dir }}/letsencrypt-auto renew --non-interactive || exit 1
-  cat /etc/letsencrypt/live/${COMMON_NAME}/fullchain.pem \
-  /etc/letsencrypt/live/${COMMON_NAME}/privkey.pem \
-  > /etc/letsencrypt/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
-  chmod 600 /etc/letsencrypt/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
+  cat {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/fullchain.pem \
+  {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/privkey.pem \
+  > {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
+  chmod 600 {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1
