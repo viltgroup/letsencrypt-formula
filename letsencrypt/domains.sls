@@ -23,8 +23,9 @@
 
 {{ check_cert_cmd }}:
   file.{{ old_check_cert_cmd_state }}:
+    - template: jinja
+    - source: salt://letsencrypt/files/check_letsencrypt_cert.sh.jinja
     - mode: 755
-    - source: salt://letsencrypt/files/check_letsencrypt_cert.sh
 
 {{ renew_cert_cmd }}:
   file.{{ old_renew_cert_cmd_state }}:
