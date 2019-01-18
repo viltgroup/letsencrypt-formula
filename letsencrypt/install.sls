@@ -11,12 +11,12 @@ letsencrypt-client:
     - name: git
   {% if letsencrypt.version is defined and letsencrypt.version|length %}
   git.cloned:
-    - name: https://github.com/letsencrypt/letsencrypt
+    - name: https://github.com/certbot/certbot
     - branch: {{ letsencrypt.version }}
     - target: {{ letsencrypt.cli_install_dir }}
   {% else %}
   git.latest:
-    - name: https://github.com/letsencrypt/letsencrypt
+    - name: https://github.com/certbot/certbot
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
   {% endif %}
