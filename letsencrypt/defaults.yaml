@@ -6,7 +6,7 @@ letsencrypt:
     - python-certbot-apache
   service: certbot.timer
   cli_install_dir: /opt/letsencrypt
-#  version: 0.26.x # if use_packe false and if you want to have specific version of certbot you can enable it
+  #version: 0.30.x  # If use_package: false and if you want to have specific version of certbot you can enable it. The value should match a certbot/certbot branch.
   config_dir:
     path: /etc/letsencrypt
     user: root
@@ -18,4 +18,3 @@ letsencrypt:
     minute: random
     hour: random
     dayweek: '*'
-
