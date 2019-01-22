@@ -6,7 +6,7 @@ letsencrypt:
     - python-certbot-apache
   service: certbot.timer
   # Only used for the git install method (use_package: false)
-  #cli_install_dir: /opt/letsencrypt
+  cli_install_dir: /opt/letsencrypt
   # Only used for the git install method (use_package: false). If you want to
   # have specific version of certbot you can enable it. The version value
   # should match a certbot/certbot branch
