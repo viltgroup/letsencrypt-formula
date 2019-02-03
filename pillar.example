@@ -21,7 +21,8 @@ letsencrypt:
     authenticator = webroot
     webroot-path = /var/lib/www
     agree-tos = True
-    renew-by-default = True
+    keep-until-expiring = True
+    expand = True
   config_dir:
     path: /etc/letsencrypt
     user: root
