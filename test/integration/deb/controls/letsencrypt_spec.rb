@@ -10,7 +10,9 @@ describe file('/etc/letsencrypt/cli.ini') do
   it { should be_grouped_into 'root' }
   it { should be_readable }
   its('size') { should be > 1 }
-  its('content') { should match 'server = https://acme-staging.api.letsencrypt.org/directory' }
+  its('content') do
+    should match 'server = https://acme-staging.api.letsencrypt.org/directory'
+  end
   its('content') { should match 'authenticator = webroot' }
 end
 
@@ -42,5 +44,7 @@ describe file('/etc/apt/sources.list.d/letsencrypt-backports-binary.list') do
   it { should be_grouped_into 'root' }
   it { should be_readable }
   its('size') { should be > 1 }
-  its('content') { should match 'deb http://deb.debian.org/debian stretch-backports main' }
+  its('content') do
+    should match 'deb http://deb.debian.org/debian stretch-backports main'
+  end
 end

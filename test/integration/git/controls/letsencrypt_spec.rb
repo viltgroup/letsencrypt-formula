@@ -14,6 +14,8 @@ describe file('/etc/letsencrypt/cli.ini') do
   it { should be_grouped_into 'root' }
   it { should be_readable }
   its('size') { should be > 1 }
-  its('content') { should match 'server = https://acme-staging.api.letsencrypt.org/directory' }
+  its('content') do
+    should match 'server = https://acme-staging.api.letsencrypt.org/directory'
+  end
   its('content') { should match 'authenticator = standalone' }
 end
