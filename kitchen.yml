@@ -51,29 +51,6 @@ verifier:
         '*':
           - apt
           - letsencrypt
-    apt.sls:
-      apt:
-        repositories:
-          #####
-          letsencrypt-backports:
-            distro: stretch-backports
-            url: http://deb.debian.org/debian
-            comps: [main]
-        preferences:
-          letsencrypt-backports:
-            pin: release a=stretch-backports
-            priority: 640
-    letsencrypt.sls:
-      letsencrypt:
-        use_package: true
-        config: |
-          server: https://acme-staging.api.letsencrypt.org/directory
-          email: saltstack-letsencrypt-formula@example.com
-          authenticator: webroot
-          webroot-path: /var/www/html
-          agree-tos: true
-          renew-by-default: true
-
 
 verifier:
   name: inspec
@@ -102,19 +79,8 @@ suites:
           base:
             '*':
               - letsencrypt
-        letsencrypt.sls:
-          letsencrypt:
-            use_package: false
-            version: 0.26.x
-            config: |
-              server = https://acme-staging.api.letsencrypt.org/directory
-              email = saltstack-letsencrypt-formula@example.com
-              authenticator = standalone
-              agree-tos = True
-              renew-by-default = True
-            domainsets:
-              www:
-                - letsencrypt-formula.example.com
+      pillars_from_files:
+        letsencrypt.sls: test/salt/pillar/git.sls
   - name: deb
     excludes:
       - centos-7
@@ -144,34 +110,9 @@ suites:
             '*':
               - apt
               - letsencrypt
-        apt.sls:
-          apt:
-            repositories:
-              #####
-              letsencrypt-backports:
-                distro: stretch-backports
-                url: http://deb.debian.org/debian
-                comps: [main]
-            preferences:
-              letsencrypt-backports:
-                pin: release a=stretch-backports
-                priority: 640
-        # epel.sls:
-        #  epel:
-        #    disabled: false
-        letsencrypt.sls:
-          letsencrypt:
-            use_package: true
-            config: |
-              server = https://acme-staging.api.letsencrypt.org/directory
-              email = saltstack-letsencrypt-formula@example.com
-              authenticator = webroot
-              webroot-path = /var/www/html
-              agree-tos = true
-              renew-by-default = true
-            domainsets:
-              www:
-                - letsencrypt-formula.example.com
+      pillars_from_files:
+        apt.sls: test/salt/pillar/apt.sls
+        letsencrypt.sls: test/salt/pillar/deb.sls
 
   - name: rpm
     excludes:
@@ -194,16 +135,5 @@ suites:
           base:
             '*':
               - letsencrypt
-        letsencrypt.sls:
-          letsencrypt:
-            use_package: true
-            config: |
-              server = https://acme-staging.api.letsencrypt.org/directory
-              email = saltstack-letsencrypt-formula@example.com
-              authenticator = webroot
-              webroot-path = /var/www/html
-              agree-tos = true
-              renew-by-default = true
-            domainsets:
-              www:
-                - letsencrypt-formula.example.com
+      pillars_from_files:
+        letsencrypt.sls: test/salt/pillar/rpm.sls
