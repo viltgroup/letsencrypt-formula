@@ -35,29 +35,6 @@ verifier:
   reporter:
     - cli
 
-  state_top:
-    base:
-      "*":
-        - letsencrypt.install
-
-  dependencies:
-    - name: apt
-      repo: git
-      source: https://github.com/saltstack-formulas/apt-formula.git
-
-  pillars:
-    top.sls:
-      base:
-        '*':
-          - apt
-          - letsencrypt
-
-verifier:
-  name: inspec
-  sudo: true
-  reporter:
-    - cli
-
 suites:
   # git install
   - name: git
