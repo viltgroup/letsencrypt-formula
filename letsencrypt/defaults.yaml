@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # vim: ft=yaml
+---
 letsencrypt:
   use_package: true
   pkgs:
@@ -10,7 +11,7 @@ letsencrypt:
   # Only used for the git install method (use_package: false). If you want to
   # have specific version of certbot you can enable it. The version value
   # should match a certbot/certbot branch
-  #version: 0.30.x
+  # version: 0.30.x
   config_dir:
     path: /etc/letsencrypt
     user: root
@@ -21,7 +22,7 @@ letsencrypt:
   # post, and/or deploy directories within /etc/letsencrypt/renewal-hooks/. For
   # more information, see: https://certbot.eff.org/docs/using.html#renewal
   post_renew:
-    cmds:
+    cmds: []
   cron:
     minute: random
     hour: random
