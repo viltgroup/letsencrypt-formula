@@ -66,8 +66,8 @@ jobs:
     # - env: INSTANCE=git-debian-9-2019-2-py3
     # - env: INSTANCE=deb-debian-9-2019-2-py3
     - env: INSTANCE=git-ubuntu-1804-2019-2-py3
-    # - env: INSTANCE=git-centos-8-2019-2-py3
-    - env: INSTANCE=rpm-centos-8-2019-2-py3
+    - env: INSTANCE=git-centos-8-2019-2-py3
+    # - env: INSTANCE=rpm-centos-8-2019-2-py3
     # - env: INSTANCE=git-fedora-31-2019-2-py3
     # - env: INSTANCE=rpm-fedora-31-2019-2-py3
     # - env: INSTANCE=git-opensuse-leap-151-2019-2-py3
@@ -76,8 +76,8 @@ jobs:
     # - env: INSTANCE=git-amazonlinux-2-2019-2-py2
     # - env: INSTANCE=rpm-amazonlinux-2-2019-2-py2
     - env: INSTANCE=git-arch-base-latest-2019-2-py2
-    # - env: INSTANCE=git-fedora-30-2018-3-py3
-    - env: INSTANCE=rpm-fedora-30-2018-3-py3
+    - env: INSTANCE=git-fedora-30-2018-3-py3
+    # - env: INSTANCE=rpm-fedora-30-2018-3-py3
     # - env: INSTANCE=git-debian-9-2018-3-py2
     # - env: INSTANCE=deb-debian-9-2018-3-py2
     # - env: INSTANCE=git-ubuntu-1604-2018-3-py2
