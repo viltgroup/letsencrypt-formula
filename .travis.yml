@@ -82,7 +82,7 @@ jobs:
     # - env: INSTANCE=git-centos-7-2019-2-py2
     # - env: INSTANCE=rpm-centos-7-2019-2-py2
     # - env: INSTANCE=git-amazonlinux-2-2019-2-py3
-    # - env: INSTANCE=rpm-amazonlinux-2-2019-2-py3
+    - env: INSTANCE=rpm-amazonlinux-2-2019-2-py3
     - env: INSTANCE=git-arch-base-latest-2019-2-py2
     - env: INSTANCE=git-fedora-30-2018-3-py3
     # - env: INSTANCE=rpm-fedora-30-2018-3-py3
@@ -98,7 +98,7 @@ jobs:
     # - env: INSTANCE=deb-debian-8-2017-7-py2
     # - env: INSTANCE=rpm-centos-6-2017-7-py2
     # - env: INSTANCE=rpm-fedora-30-2017-7-py2
-    - env: INSTANCE=rpm-amazonlinux-1-2017-7-py2
+    # - env: INSTANCE=rpm-amazonlinux-1-2017-7-py2
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
