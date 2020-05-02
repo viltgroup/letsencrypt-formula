@@ -68,7 +68,6 @@ jobs:
     # - env: INSTANCE=git-opensuse-leap-151-master-py3
     # - env: INSTANCE=git-amazonlinux-2-master-py3
     # - env: INSTANCE=rpm-amazonlinux-2-master-py3
-    # - env: INSTANCE=git-arch-base-latest-master-py2
     # - env: INSTANCE=git-debian-10-2019-2-py3
     # - env: INSTANCE=deb-debian-10-2019-2-py3
     # - env: INSTANCE=git-debian-9-2019-2-py3
