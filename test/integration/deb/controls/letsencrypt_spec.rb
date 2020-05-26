@@ -14,6 +14,7 @@ describe file('/etc/letsencrypt/cli.ini') do
     should match 'server = https://acme-staging.api.letsencrypt.org/directory'
   end
   its('content') { should match 'authenticator = webroot' }
+  its('content') { should match 'File managed by Salt' }
 end
 
 describe file('/usr/bin/letsencrypt') do
