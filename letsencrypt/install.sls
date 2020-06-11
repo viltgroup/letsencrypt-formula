@@ -39,3 +39,4 @@ letsencrypt-client:
     - force_reset: True
   {%-   endif %}
   {%- endif %}
+    - reload_modules: True
