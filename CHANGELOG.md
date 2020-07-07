@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.20.2](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v0.20.1...v0.20.2) (2020-07-07)
+
+
+### Bug Fixes
+
+* **domains:** renew --no-random-sleep-on-renew ([07cbc3b](https://github.com/saltstack-formulas/letsencrypt-formula/commit/07cbc3bf8877bbca9da067e9208ac7c05d651b00))
+
+
+### Continuous Integration
+
+* **kitchen:** use `saltimages` Docker Hub where available [skip ci] ([be61a98](https://github.com/saltstack-formulas/letsencrypt-formula/commit/be61a987832218a3b0036c33fec6ccab343b0d86))
+
 ## [0.20.1](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v0.20.0...v0.20.1) (2020-06-11)
 
 
