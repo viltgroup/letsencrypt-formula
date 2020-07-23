@@ -1,5 +1,31 @@
 # Changelog
 
+# [1.0.0](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v0.20.2...v1.0.0) (2020-07-23)
+
+
+### Bug Fixes
+
+* **package:** amazonlinux defaults to python2 ([926c779](https://github.com/saltstack-formulas/letsencrypt-formula/commit/926c779d477e86ee99eeb435a7bca66b023cf594))
+* **server:** change server to ACMEv2 ([1fc79b8](https://github.com/saltstack-formulas/letsencrypt-formula/commit/1fc79b858364d08621dcd2b606e6adf440d0d9f8)), closes [#72](https://github.com/saltstack-formulas/letsencrypt-formula/issues/72)
+
+
+### Documentation
+
+* **defaults:** update pillar.example to good-citizen defaults ([b889678](https://github.com/saltstack-formulas/letsencrypt-formula/commit/b889678880d89ca629e13551fbd31a5b447b8e16))
+
+
+### Features
+
+* **config:** add sane defaults ([d9afac9](https://github.com/saltstack-formulas/letsencrypt-formula/commit/d9afac941c17f57b97ca50e70cf78a21e60c39c5))
+* **package:** update default to py3 ([4c93c11](https://github.com/saltstack-formulas/letsencrypt-formula/commit/4c93c119d2fd596bfd032598f8f4883ec999b748))
+
+
+### BREAKING CHANGES
+
+* **config:** `config` can now be provided as a hash or a string; defaults
+are modified and, while sane and desirable, do change the behavior of the
+formula.
+
 ## [0.20.2](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v0.20.1...v0.20.2) (2020-07-07)
 
 
