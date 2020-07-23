@@ -22,9 +22,9 @@ letsencrypt:
     email: webmaster@example.com
     authenticator: webroot
     webroot-path: /var/lib/www
-    agree-tos: True
-    keep-until-expiring: True
-    expand: True
+    agree-tos: true
+    keep-until-expiring: true
+    expand: true
   # For backward compatibility, config can be passed as a string
   # (although it's discouraged, as this format might be dropped in a future
   # release)
