@@ -18,6 +18,7 @@ letsencrypt:
     group: root
     mode: 755
   config:
+    server: https://acme-v02.api.letsencrypt.org/directory
     agree-tos: true
     keep-until-expiring: true
     expand: true

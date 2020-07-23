@@ -18,7 +18,7 @@ letsencrypt:
   # Any parameter from the cli can be specified in the config file
   # check https://certbot.eff.org/docs/using.html#configuration-file
   config:
-    server: https://acme-v01.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: webmaster@example.com
     authenticator: webroot
     webroot-path: /var/lib/www
