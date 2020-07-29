@@ -6,6 +6,8 @@ letsencrypt:
   pkgs:
     - python3-certbot-apache
   service: certbot.timer
+  # Only used for the pkg install method (use_package: true), internal var
+  _cli_path: /usr/bin/certbot
   # Only used for the git install method (use_package: false)
   cli_install_dir: /opt/letsencrypt
   # Only used for the git install method (use_package: false). If you want to
