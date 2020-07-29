@@ -2,6 +2,15 @@
 Changelog
 =========
 
+`1.1.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v1.0.0...v1.1.0>`_ (2020-07-29)
+-------------------------------------------------------------------------------------------------------------
+
+Features
+^^^^^^^^
+
+
+* **map:** add FreeBSD support for certbot (\ `911a443 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/911a443070d601f30a0b43e6dc258fd00a7d70cb>`_\ )
+
 `1.0.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v0.20.2...v1.0.0>`_ (2020-07-23)
 --------------------------------------------------------------------------------------------------------------
 
