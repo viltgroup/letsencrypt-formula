@@ -41,8 +41,8 @@
 # represent SubjectAlternativeNames
 create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
   cmd.run:
-    - unless: {{ check_cert_cmd }} {{ domainlist[0] }}
-    - name: {{ create_cert_cmd }} certonly --quiet -d {{ domainlist|join(' -d ') }} --non-interactive
+    - unless: {{ check_cert_cmd }} {{ setname }}
+    - name: {{ create_cert_cmd }} certonly --quiet --cert-name {{ setname }} -d {{ domainlist|join(' -d ') }} --non-interactive
       {% if not letsencrypt.use_package %}
     - cwd: {{ letsencrypt.cli_install_dir }}
       {% endif %}
@@ -70,14 +70,14 @@ letsencrypt-crontab-{{ setname }}-{{ domainlist[0] }}:
       - file: {{ renew_cert_cmd }}
       {% endif %}
 
-create-fullchain-privkey-pem-for-{{ domainlist[0] }}:
+create-fullchain-privkey-pem-for-{{ setname }}:
   cmd.run:
     - name: |
-        cat {{ letsencrypt.config_dir.path }}/live/{{ domainlist[0] }}/fullchain.pem \
-            {{ letsencrypt.config_dir.path }}/live/{{ domainlist[0] }}/privkey.pem \
-            > {{ letsencrypt.config_dir.path }}/live/{{ domainlist[0] }}/fullchain-privkey.pem && \
-        chmod 600 {{ letsencrypt.config_dir.path }}/live/{{ domainlist[0] }}/fullchain-privkey.pem
-    - creates: {{ letsencrypt.config_dir.path }}/live/{{ domainlist[0] }}/fullchain-privkey.pem
+        cat {{ letsencrypt.config_dir.path }}/live/{{ setname }}/fullchain.pem \
+            {{ letsencrypt.config_dir.path }}/live/{{ setname }}/privkey.pem \
+            > {{ letsencrypt.config_dir.path }}/live/{{ setname }}/fullchain-privkey.pem && \
+        chmod 600 {{ letsencrypt.config_dir.path }}/live/{{ setname }}/fullchain-privkey.pem
+    - creates: {{ letsencrypt.config_dir.path }}/live/{{ setname }}/fullchain-privkey.pem
     - require:
       - cmd: create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}
 
