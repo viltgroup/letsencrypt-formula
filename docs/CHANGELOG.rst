@@ -2,6 +2,30 @@
 Changelog
 =========
 
+`2.0.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v1.1.0...v2.0.0>`_ (2020-08-26)
+-------------------------------------------------------------------------------------------------------------
+
+Code Refactoring
+^^^^^^^^^^^^^^^^
+
+
+* use domains' setname as --cert-name option (\ `68fb247 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/68fb2475508fea71caf542f62be0e5ce3789e90e>`_\ )
+
+BREAKING CHANGES
+^^^^^^^^^^^^^^^^
+
+
+* Since this domains' setname was not used, the path was named
+  after the first domain in the domains set. In order to keep using this workflow,
+  you need to rename the setname with the first domain in the list like the
+  following:
+  .. code-block::
+
+     letsencrypt:
+     domains:
+       foo.example.com:
+         - foo.example.com
+
 `1.1.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v1.0.0...v1.1.0>`_ (2020-07-29)
 -------------------------------------------------------------------------------------------------------------
 
