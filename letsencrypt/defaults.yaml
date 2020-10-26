@@ -31,6 +31,7 @@ letsencrypt:
   # more information, see: https://certbot.eff.org/docs/using.html#renewal
   post_renew:
     cmds: []
+  create_init_cert_subcmd: certonly
   cron:
     minute: random
     hour: random
