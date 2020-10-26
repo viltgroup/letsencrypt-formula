@@ -2,6 +2,23 @@
 Changelog
 =========
 
+`2.1.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.0.0...v2.1.0>`_ (2020-10-26)
+-------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **pre-commit:** add to formula [skip ci] (\ `0ca8d4f <https://github.com/saltstack-formulas/letsencrypt-formula/commit/0ca8d4f92f721161a2b0de15e882fbf144e1f017>`_\ )
+* **pre-commit:** enable/disable ``rstcheck`` as relevant [skip ci] (\ `87e6d43 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/87e6d43da34943ae5435615939417b2c251394a9>`_\ )
+* **pre-commit:** finalise ``rstcheck`` configuration [skip ci] (\ `30492a3 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/30492a36a285baa428b7a3e894246998a5dce8c2>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **map:** add ``create_init_cert_subcmd`` var (\ `20f9b35 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/20f9b35fda19a7bad7335283fc566836a7631ab1>`_\ )
+
 `2.0.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v1.1.0...v2.0.0>`_ (2020-08-26)
 -------------------------------------------------------------------------------------------------------------
 
