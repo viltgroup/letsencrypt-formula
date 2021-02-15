@@ -25,9 +25,8 @@ letsencrypt-client:
     - pkgs: {{ letsencrypt.pkgs | json }}
   {%- else %}
   pkg.installed:
-    - name: git
+    - name: {{ letsencrypt.git_pkg }}
   {%-   if letsencrypt.version is defined and letsencrypt.version|length %}
-  # Note: `git.cloned` is unavailable in `2017.7`
   git.cloned:
     - name: https://github.com/certbot/certbot
     - branch: {{ letsencrypt.version }}

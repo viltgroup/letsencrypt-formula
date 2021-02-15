@@ -3,6 +3,7 @@
 ---
 letsencrypt:
   use_package: true
+  git_pkg: git
   pkgs:
     - python3-certbot-apache
   service: certbot.timer
