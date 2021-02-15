@@ -5,6 +5,7 @@
 {% import_yaml 'letsencrypt/defaults.yaml' as defaults %}
 {% import_yaml 'letsencrypt/osfamilymap.yaml' as osfamilymap %}
 {% import_yaml 'letsencrypt/osmap.yaml' as osmap %}
+{% import_yaml 'letsencrypt/osfingermap.yaml' as osfingermap %}
 
 {% set letsencrypt = salt['grains.filter_by'](
     defaults,
@@ -14,7 +15,11 @@
         merge=salt['grains.filter_by'](
             osmap,
             grain='os',
-            merge = salt['pillar.get']('letsencrypt', {}),
+            merge=salt['grains.filter_by'](
+                osfingermap,
+                grain='osfinger',
+                merge = salt['pillar.get']('letsencrypt', {}),
+            ),
         ),
     ),
     base='letsencrypt')
