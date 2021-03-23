@@ -312,6 +312,7 @@ suites:
       state_top:
         base:
           '*':
+            - letsencrypt._mapdata
             - letsencrypt.install
             - letsencrypt.config
       pillars:
@@ -344,6 +345,7 @@ suites:
       state_top:
         base:
           '*':
+            - letsencrypt._mapdata
             - apt.repositories
             - apt.preferences
             - apt.update
@@ -398,6 +400,7 @@ suites:
       state_top:
         base:
           '*':
+            - letsencrypt._mapdata
             - letsencrypt.install
             - letsencrypt.config
       pillars:
