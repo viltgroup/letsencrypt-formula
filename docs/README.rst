@@ -1,5 +1,3 @@
-.. _readme:
-
 letsencrypt-formula
 ===================
 
@@ -74,6 +72,7 @@ If you set `use_package` to `True`, it will:
   *letsencrypt*'s pillar.
 * As a safety measure, if there's an /opt/letsencrypt directory from a git-based installation, it will be left
   untouched, but unused.
+
 To check dependencies to use the package for your distro, check https://certbot.eff.org/all-instructions.
 
 ``letsencrypt.install``
