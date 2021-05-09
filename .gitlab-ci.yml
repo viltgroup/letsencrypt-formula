@@ -158,6 +158,7 @@ rpm-amazonlinux-2-master-py3: {extends: '.test_instance'}
 rpm-oraclelinux-8-master-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-master-py3: {extends: '.test_instance'}
 # rpm-oraclelinux-7-master-py3: {extends: '.test_instance'}
+git-arch-base-latest-master-py3: {extends: '.test_instance'}
 git-gentoo-stage3-latest-master-py3: {extends: '.test_instance'}
 git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-debian-10-3003-0-py3: {extends: '.test_instance'}
@@ -172,7 +173,7 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-3003-0-py3: {extends: '.test_instance'}
 # git-oraclelinux-8-3003-0-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-3003-0-py3: {extends: '.test_instance'}
-git-arch-base-latest-3003-0-py3: {extends: '.test_instance'}
+# git-arch-base-latest-3003-0-py3: {extends: '.test_instance'}
 # git-gentoo-stage3-latest-3003-0-py3: {extends: '.test_instance'}
 # git-gentoo-stage3-systemd-3003-0-py3: {extends: '.test_instance'}
 # git-debian-10-3002-6-py3: {extends: '.test_instance'}
