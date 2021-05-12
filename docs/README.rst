@@ -56,7 +56,7 @@ Available states
 This is a shortcut for letsencrypt.install letsencrypt.config and letsencrypt.domains.
 
 If `use_package` is `True` (the default), the formula will try to install the *certbot* package from your Distro's repo.
-Keep in mind that most distros don't have a package available by default: Ie, current Debian (Stretch) requires a backports repo installed.
+Keep in mind that most distros don't have a package available by default: Ie, previous stable Debian (Stretch) requires a backports repo installed.
 Centos 7 requires EPEL, etc. This formula **DOES NOT** manage these repositories. Use the `apt-formula <https://github.com/saltstack-formulas/apt-formula>`_
 or the `epel-formula <https://github.com/saltstack-formulas/epel-formula>`_ to manage them.
 
