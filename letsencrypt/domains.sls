@@ -53,12 +53,16 @@ create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
     - cwd: {{ letsencrypt.cli_install_dir }}
       {% endif %}
     - unless:
+      {% if letsencrypt.use_package %}
       - fun: cmd.run
         python_shell: true
         cmd: |
           {{ check_cert_cmd }} {{ setname }} \
             -d {{ domainlist|join(' -d ') }} | \
             /bin/grep -q "Certificate Name: {{ setname }}"
+      {% else %}
+      - {{ check_cert_cmd }} {{ setname }} {{ domainlist | join(' ') }}
+      {% endif %}
     - require:
       {% if letsencrypt.use_package %}
       - pkg: letsencrypt-client
