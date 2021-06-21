@@ -127,7 +127,6 @@ rubocop:
 # git-debian-9-tiamat-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-tiamat-py3: {extends: '.test_instance'}
-# git-ubuntu-1604-tiamat-py3: {extends: '.test_instance'}
 # git-centos-8-tiamat-py3: {extends: '.test_instance'}
 # git-centos-7-tiamat-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-tiamat-py3: {extends: '.test_instance'}
@@ -139,7 +138,6 @@ deb-debian-10-master-py3: {extends: '.test_instance'}
 deb-debian-9-master-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-master-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-master-py3: {extends: '.test_instance'}
-# git-ubuntu-1604-master-py3: {extends: '.test_instance'}
 # git-centos-8-master-py3: {extends: '.test_instance'}
 rpm-centos-8-master-py3: {extends: '.test_instance'}
 # git-centos-7-master-py3: {extends: '.test_instance'}
@@ -148,8 +146,6 @@ rpm-centos-7-master-py3: {extends: '.test_instance'}
 rpm-fedora-34-master-py3: {extends: '.test_instance'}
 # git-fedora-33-master-py3: {extends: '.test_instance'}
 rpm-fedora-33-master-py3: {extends: '.test_instance'}
-# git-fedora-32-master-py3: {extends: '.test_instance'}
-rpm-fedora-32-master-py3: {extends: '.test_instance'}
 git-opensuse-leap-152-master-py3: {extends: '.test_instance'}
 git-opensuse-tmbl-latest-master-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-master-py3: {extends: '.test_instance'}
@@ -169,7 +165,6 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-centos-7-3003-0-py3: {extends: '.test_instance'}
 # git-fedora-34-3003-0-py3: {extends: '.test_instance'}
 # git-fedora-33-3003-0-py3: {extends: '.test_instance'}
-# git-fedora-32-3003-0-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-3003-0-py3: {extends: '.test_instance'}
 # git-oraclelinux-8-3003-0-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-3003-0-py3: {extends: '.test_instance'}
@@ -180,12 +175,10 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-debian-9-3002-6-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-3002-6-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-3002-6-py3: {extends: '.test_instance'}
-# git-ubuntu-1604-3002-6-py3: {extends: '.test_instance'}
 # git-centos-8-3002-6-py3: {extends: '.test_instance'}
 # git-centos-7-3002-6-py3: {extends: '.test_instance'}
 # git-fedora-34-3002-6-py3: {extends: '.test_instance'}
 # git-fedora-33-3002-6-py3: {extends: '.test_instance'}
-# git-fedora-32-3002-6-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-3002-6-py3: {extends: '.test_instance'}
 # git-oraclelinux-8-3002-6-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-3002-6-py3: {extends: '.test_instance'}
@@ -198,12 +191,10 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-debian-9-3001-7-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-3001-7-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-3001-7-py3: {extends: '.test_instance'}
-# git-ubuntu-1604-3001-7-py3: {extends: '.test_instance'}
 # git-centos-8-3001-7-py3: {extends: '.test_instance'}
 # git-centos-7-3001-7-py3: {extends: '.test_instance'}
 # git-fedora-34-3001-7-py3: {extends: '.test_instance'}
 # git-fedora-33-3001-7-py3: {extends: '.test_instance'}
-# git-fedora-32-3001-7-py3: {extends: '.test_instance'}
 # git-opensuse-leap-152-3001-7-py3: {extends: '.test_instance'}
 # git-opensuse-tmbl-latest-3001-7-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-3001-7-py3: {extends: '.test_instance'}
@@ -215,7 +206,6 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-debian-10-3000-9-py3: {extends: '.test_instance'}
 # git-debian-9-3000-9-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-3000-9-py3: {extends: '.test_instance'}
-# git-ubuntu-1604-3000-9-py3: {extends: '.test_instance'}
 # git-centos-8-3000-9-py3: {extends: '.test_instance'}
 # git-centos-7-3000-9-py3: {extends: '.test_instance'}
 # git-opensuse-leap-152-3000-9-py3: {extends: '.test_instance'}
@@ -223,7 +213,6 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 # git-oraclelinux-8-3000-9-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-3000-9-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-3000-9-py2: {extends: '.test_instance'}
-# git-ubuntu-1604-3000-9-py2: {extends: '.test_instance'}
 # git-arch-base-latest-3000-9-py2: {extends: '.test_instance'}
 # git-gentoo-stage3-latest-3000-8-py3: {extends: '.test_instance'}
 # git-gentoo-stage3-systemd-3000-8-py3: {extends: '.test_instance'}

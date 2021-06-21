@@ -87,7 +87,6 @@ jobs:
     # - env: INSTANCE=git-debian-9-tiamat-py3
     # - env: INSTANCE=git-ubuntu-2004-tiamat-py3
     # - env: INSTANCE=git-ubuntu-1804-tiamat-py3
-    # - env: INSTANCE=git-ubuntu-1604-tiamat-py3
     # - env: INSTANCE=git-centos-8-tiamat-py3
     # - env: INSTANCE=git-centos-7-tiamat-py3
     # - env: INSTANCE=git-amazonlinux-2-tiamat-py3
@@ -99,7 +98,6 @@ jobs:
     - env: INSTANCE=deb-debian-9-master-py3
     # - env: INSTANCE=git-ubuntu-2004-master-py3
     # - env: INSTANCE=git-ubuntu-1804-master-py3
-    # - env: INSTANCE=git-ubuntu-1604-master-py3
     # - env: INSTANCE=git-centos-8-master-py3
     - env: INSTANCE=rpm-centos-8-master-py3
     # - env: INSTANCE=git-centos-7-master-py3
@@ -108,8 +106,6 @@ jobs:
     - env: INSTANCE=rpm-fedora-34-master-py3
     # - env: INSTANCE=git-fedora-33-master-py3
     - env: INSTANCE=rpm-fedora-33-master-py3
-    # - env: INSTANCE=git-fedora-32-master-py3
-    - env: INSTANCE=rpm-fedora-32-master-py3
     - env: INSTANCE=git-opensuse-leap-152-master-py3
     - env: INSTANCE=git-opensuse-tmbl-latest-master-py3
     # - env: INSTANCE=git-amazonlinux-2-master-py3
@@ -129,7 +125,6 @@ jobs:
     # - env: INSTANCE=git-centos-7-3003-0-py3
     # - env: INSTANCE=git-fedora-34-3003-0-py3
     # - env: INSTANCE=git-fedora-33-3003-0-py3
-    # - env: INSTANCE=git-fedora-32-3003-0-py3
     # - env: INSTANCE=git-amazonlinux-2-3003-0-py3
     # - env: INSTANCE=git-oraclelinux-8-3003-0-py3
     # - env: INSTANCE=git-oraclelinux-7-3003-0-py3
@@ -140,12 +135,10 @@ jobs:
     # - env: INSTANCE=git-debian-9-3002-6-py3
     # - env: INSTANCE=git-ubuntu-2004-3002-6-py3
     # - env: INSTANCE=git-ubuntu-1804-3002-6-py3
-    # - env: INSTANCE=git-ubuntu-1604-3002-6-py3
     # - env: INSTANCE=git-centos-8-3002-6-py3
     # - env: INSTANCE=git-centos-7-3002-6-py3
     # - env: INSTANCE=git-fedora-34-3002-6-py3
     # - env: INSTANCE=git-fedora-33-3002-6-py3
-    # - env: INSTANCE=git-fedora-32-3002-6-py3
     # - env: INSTANCE=git-amazonlinux-2-3002-6-py3
     # - env: INSTANCE=git-oraclelinux-8-3002-6-py3
     # - env: INSTANCE=git-oraclelinux-7-3002-6-py3
@@ -158,12 +151,10 @@ jobs:
     # - env: INSTANCE=git-debian-9-3001-7-py3
     # - env: INSTANCE=git-ubuntu-2004-3001-7-py3
     # - env: INSTANCE=git-ubuntu-1804-3001-7-py3
-    # - env: INSTANCE=git-ubuntu-1604-3001-7-py3
     # - env: INSTANCE=git-centos-8-3001-7-py3
     # - env: INSTANCE=git-centos-7-3001-7-py3
     # - env: INSTANCE=git-fedora-34-3001-7-py3
     # - env: INSTANCE=git-fedora-33-3001-7-py3
-    # - env: INSTANCE=git-fedora-32-3001-7-py3
     # - env: INSTANCE=git-opensuse-leap-152-3001-7-py3
     # - env: INSTANCE=git-opensuse-tmbl-latest-3001-7-py3
     # - env: INSTANCE=git-amazonlinux-2-3001-7-py3
@@ -175,7 +166,6 @@ jobs:
     # - env: INSTANCE=git-debian-10-3000-9-py3
     # - env: INSTANCE=git-debian-9-3000-9-py3
     # - env: INSTANCE=git-ubuntu-1804-3000-9-py3
-    # - env: INSTANCE=git-ubuntu-1604-3000-9-py3
     # - env: INSTANCE=git-centos-8-3000-9-py3
     # - env: INSTANCE=git-centos-7-3000-9-py3
     # - env: INSTANCE=git-opensuse-leap-152-3000-9-py3
@@ -183,7 +173,6 @@ jobs:
     # - env: INSTANCE=git-oraclelinux-8-3000-9-py3
     # - env: INSTANCE=git-oraclelinux-7-3000-9-py3
     # - env: INSTANCE=git-ubuntu-1804-3000-9-py2
-    # - env: INSTANCE=git-ubuntu-1604-3000-9-py2
     # - env: INSTANCE=git-arch-base-latest-3000-9-py2
     # - env: INSTANCE=git-gentoo-stage3-latest-3000-8-py3
     # - env: INSTANCE=git-gentoo-stage3-systemd-3000-8-py3
