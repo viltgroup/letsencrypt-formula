@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.1.1](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.1.0...v2.1.1) (2021-06-23)
+
+
+### Bug Fixes
+
+* **domains:** check cert exists with desired domains ([a11fa8b](https://github.com/saltstack-formulas/letsencrypt-formula/commit/a11fa8b64900598ad1c0845a3fd698feed3c711f)), closes [#57](https://github.com/saltstack-formulas/letsencrypt-formula/issues/57)
+* **domains:** update git check cert script ([2cbb50c](https://github.com/saltstack-formulas/letsencrypt-formula/commit/2cbb50c663437a0626237f0a2007d0aa7abd5b1d))
+* **gentoo:** use correct `git` package name ([1054e0d](https://github.com/saltstack-formulas/letsencrypt-formula/commit/1054e0db7c67f63ef8fb2967c0c4cb941919fb7a))
+* **osfinger:** provide correct package for `centos-7` & `oraclelinux-7` ([19998df](https://github.com/saltstack-formulas/letsencrypt-formula/commit/19998df42d6d9079432ef8e6fc1b766db7ff569b))
+
+
+### Continuous Integration
+
+* **kitchen+gitlab:** remove Ubuntu 16.04 & Fedora 32 (EOL) [skip ci] ([8b5b4f4](https://github.com/saltstack-formulas/letsencrypt-formula/commit/8b5b4f489aec5d4eab0ad9a0069702ea8f814723))
+* add `arch-master` to matrix and update `.travis.yml` [skip ci] ([7ea4e63](https://github.com/saltstack-formulas/letsencrypt-formula/commit/7ea4e63fa226f10be2e0cef6186e83ef2e221e2a))
+* **commitlint:** ensure `upstream/master` uses main repo URL [skip ci] ([5def61c](https://github.com/saltstack-formulas/letsencrypt-formula/commit/5def61c38210ca0bcd7bc35dc713d294fb69b40a))
+* **gemfile+lock:** use `ssf` customised `kitchen-docker` repo [skip ci] ([8cc1a93](https://github.com/saltstack-formulas/letsencrypt-formula/commit/8cc1a9383fe1b381f7daebc8d55102d476c3ed5f))
+* **gitlab-ci:** add `rubocop` linter (with `allow_failure`) [skip ci] ([824c5c2](https://github.com/saltstack-formulas/letsencrypt-formula/commit/824c5c23e65f26c2ec8b72db1657d3a9c9b32d90))
+* **gitlab-ci:** use GitLab CI as Travis CI replacement ([90d8a06](https://github.com/saltstack-formulas/letsencrypt-formula/commit/90d8a069b64ded15a5299a0980705cc37a42c069))
+* **kitchen+ci:** use latest pre-salted images (after CVE) [skip ci] ([e6c0d13](https://github.com/saltstack-formulas/letsencrypt-formula/commit/e6c0d13ee94cd45c35f9dd1a2eb6bd37a01b2e86))
+* **kitchen+gitlab:** adjust matrix to add `3003` [skip ci] ([493ab98](https://github.com/saltstack-formulas/letsencrypt-formula/commit/493ab98f014734d3c5f622f8fbe6bd7a0c01ea10))
+* **kitchen+gitlab-ci:** use latest pre-salted images [skip ci] ([ae1610b](https://github.com/saltstack-formulas/letsencrypt-formula/commit/ae1610bd60d82ba3c9a10da1f27d086d89380ef9))
+* **pre-commit:** update hook for `rubocop` [skip ci] ([a9cbb16](https://github.com/saltstack-formulas/letsencrypt-formula/commit/a9cbb1650f92042406d3de4f37e0e25567cf10cb))
+
+
+### Documentation
+
+* **readme:** fix `coala` violations [skip ci] ([98c2898](https://github.com/saltstack-formulas/letsencrypt-formula/commit/98c2898e28f5bd2f45fda395805ce3af4c360228))
+* **readme:** stretch is now old-stable [skip ci] ([7f0bab5](https://github.com/saltstack-formulas/letsencrypt-formula/commit/7f0bab5493331fcb66a82baf0b4dd1b91c03856c))
+
+
+### Tests
+
+* standardise use of `share` suite & `_mapdata` state [skip ci] ([1105cb8](https://github.com/saltstack-formulas/letsencrypt-formula/commit/1105cb896a57ccdf2906ad225e757773686aeceb))
+
 # [2.1.0](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.0.0...v2.1.0) (2020-10-26)
 
 
