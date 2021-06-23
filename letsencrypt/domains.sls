@@ -4,22 +4,22 @@
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 
 {% if letsencrypt.use_package %}
-  # Renew checks if the cert exists and needs to be renewed
-  {% set check_cert_cmd = letsencrypt._cli_path ~ ' renew --dry-run --no-random-sleep-on-renew --cert-name' %}
+  {% set check_cert_cmd = letsencrypt._cli_path ~ ' certificates --cert-name' %}
   {% set renew_cert_cmd = letsencrypt._cli_path ~ ' renew' %}
+  {% set create_cert_cmd = letsencrypt._cli_path %}
+
   {% set old_check_cert_cmd_state = 'absent' %}
   {% set old_renew_cert_cmd_state = 'absent' %}
   {% set old_cron_state = 'absent' %}
-  {% set create_cert_cmd = letsencrypt._cli_path %}
 
 {% else %}
   {% set check_cert_cmd = '/usr/local/bin/check_letsencrypt_cert.sh' %}
   {% set renew_cert_cmd = '/usr/local/bin/renew_letsencrypt_cert.sh' %}
+  {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/letsencrypt-auto' %}
+
   {% set old_check_cert_cmd_state = 'managed' %}
   {% set old_renew_cert_cmd_state = 'managed' %}
   {% set old_cron_state = 'present' %}
-  {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/letsencrypt-auto' %}
-{% endif %}
 
 {{ check_cert_cmd }}:
   file.{{ old_check_cert_cmd_state }}:
@@ -35,16 +35,33 @@
     - require:
       - file: {{ check_cert_cmd }}
 
+{% endif %}
+
 {% for setname, domainlist in letsencrypt.domainsets.items() %}
 
 # domainlist[0] represents the "CommonName", and the rest
 # represent SubjectAlternativeNames
 create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
   cmd.run:
-    - unless: {{ check_cert_cmd }} {{ setname }}
-    - name: {{ create_cert_cmd }} {{ letsencrypt.create_init_cert_subcmd }} --quiet --cert-name {{ setname }} -d {{ domainlist|join(' -d ') }} --non-interactive
+    - name: |
+        {{ create_cert_cmd }} {{ letsencrypt.create_init_cert_subcmd }} \
+          --quiet \
+          --non-interactive \
+          --cert-name {{ setname }} \
+          -d {{ domainlist|join(' -d ') }}
       {% if not letsencrypt.use_package %}
     - cwd: {{ letsencrypt.cli_install_dir }}
+      {% endif %}
+    - unless:
+      {% if letsencrypt.use_package %}
+      - fun: cmd.run
+        python_shell: true
+        cmd: |
+          {{ check_cert_cmd }} {{ setname }} \
+            -d {{ domainlist|join(' -d ') }} | \
+            /bin/grep -q "Certificate Name: {{ setname }}"
+      {% else %}
+      - {{ check_cert_cmd }} {{ setname }} {{ domainlist | join(' ') }}
       {% endif %}
     - require:
       {% if letsencrypt.use_package %}
