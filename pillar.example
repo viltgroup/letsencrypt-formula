@@ -7,8 +7,12 @@ letsencrypt:
   # A list of package/s to install. To find the correct name for the variant
   # you want to use, check https://certbot.eff.org/all-instructions
   # Usually, you'll need a single one, but you can also add other plugins here.
+  # It defaults to installing the `certbot` package, but you can add other
+  # plugins for authentication/install
   pkgs:
-    - python-certbot-apache
+    - python3-certbot-apache
+    # - python3-certbot-nginx
+    # - python3-dns-route53
   # Only used for the git install method (use_package: false)
   cli_install_dir: /opt/letsencrypt
   # Only used for the git install method (use_package: false). If you want to
