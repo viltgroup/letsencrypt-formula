@@ -10,7 +10,4 @@
 # you will need to provide at least an empty dict in this file, e.g.
 # osmap: {}
 ---
-# os_family: RedHat
-Amazon:
-  pkgs:
-    - python2-certbot-apache
+osmap: {}

@@ -65,7 +65,6 @@ If `use_package` is `False` it installs and configures the letsencrypt cli from 
 ** WARNING **
 If you set `use_package` to `True`, it will:
 
-* Default to Python3's certbot package (where possible), with Apache as the default Webserver to manage.
 * Delete all certbot's crons if they exist from a previous git-based installation (as the package uses a
   systemd's timer unit to renew all the certs)
 * Delete git-based installation's scripts (usually installed under /usr/local/bin) if they still exist declared in

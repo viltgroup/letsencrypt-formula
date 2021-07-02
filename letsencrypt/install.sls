@@ -21,8 +21,9 @@ letsencrypt_external_repo:
 
 letsencrypt-client:
   {%- if letsencrypt.use_package %}
+    {%- set pkgs = letsencrypt.pkgs or [letsencrypt._default_pkg] %}
   pkg.installed:
-    - pkgs: {{ letsencrypt.pkgs | json }}
+    - pkgs: {{ pkgs | json }}
   {%- else %}
   pkg.installed:
     - name: {{ letsencrypt.git_pkg }}
