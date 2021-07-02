@@ -1,5 +1,28 @@
 # Changelog
 
+# [3.0.0](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.1.1...v3.0.0) (2021-07-02)
+
+
+### Bug Fixes
+
+* **defaults:** install `certbot` with no plugins ([70dafdd](https://github.com/saltstack-formulas/letsencrypt-formula/commit/70dafdd9456e27d224c94a2bcccc916fedd16bd4))
+
+
+### Continuous Integration
+
+* **3003.1:** update inc. AlmaLinux, Rocky & `rst-lint` [skip ci] ([f937dca](https://github.com/saltstack-formulas/letsencrypt-formula/commit/f937dca2ff16eff5fc4f855ae2d550ef15eefa34))
+
+
+### BREAKING CHANGES
+
+* **defaults:** The formula was installing the Apache plugin by default
+which is not reasonable. Also, as `letsencrypt:pkgs` is a list,
+_adding_ another entry in the list was not replacing this default, causing
+undesired packages to be installed.
+
+The new default is an empty list of packages, defaulting to `certbot` in
+the code.
+
 ## [2.1.1](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.1.0...v2.1.1) (2021-06-23)
 
 
