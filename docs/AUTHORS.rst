@@ -18,7 +18,7 @@ This list is sorted by the number of commits per contributor in *descending* ord
      - 70
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars.githubusercontent.com/u/242396?v=4' width='36' height='36' alt='@javierbertoli'>`
      - `@javierbertoli <https://github.com/javierbertoli>`_
-     - 30
+     - 33
    * - :raw-html-m2r:`<img class='float-left rounded-1' src='https://avatars.githubusercontent.com/u/1011603?v=4' width='36' height='36' alt='@martinhoefling'>`
      - `@martinhoefling <https://github.com/martinhoefling>`_
      - 16

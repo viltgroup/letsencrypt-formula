@@ -2,6 +2,21 @@
 Changelog
 =========
 
+`3.1.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v3.0.0...v3.1.0>`_ (2021-07-02)
+-------------------------------------------------------------------------------------------------------------
+
+Continuous Integration
+^^^^^^^^^^^^^^^^^^^^^^
+
+
+* **gitlab:** enable ``domains`` testing on gitlab (\ `c3637f7 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/c3637f7fd1b82469d319b181f0632b3c3b388561>`_\ )
+
+Features
+^^^^^^^^
+
+
+* **domains:** allow to specify different authenticators/installers (\ `87456a1 <https://github.com/saltstack-formulas/letsencrypt-formula/commit/87456a1c0601f19e8ce92d7d292b86853abc87cb>`_\ )
+
 `3.0.0 <https://github.com/saltstack-formulas/letsencrypt-formula/compare/v2.1.1...v3.0.0>`_ (2021-07-02)
 -------------------------------------------------------------------------------------------------------------
 
