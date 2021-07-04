@@ -84,8 +84,10 @@ jobs:
     # Make sure the instances listed below match up with
     # the `platforms` defined in `kitchen.yml`
     # - env: INSTANCE=git-debian-10-tiamat-py3
+    - env: INSTANCE=domains-debian-10-tiamat-py3
     # - env: INSTANCE=git-debian-9-tiamat-py3
     # - env: INSTANCE=git-ubuntu-2004-tiamat-py3
+    - env: INSTANCE=domains-ubuntu-2004-tiamat-py3
     # - env: INSTANCE=git-ubuntu-1804-tiamat-py3
     # - env: INSTANCE=git-centos-8-tiamat-py3
     # - env: INSTANCE=git-centos-7-tiamat-py3
@@ -96,10 +98,14 @@ jobs:
     # - env: INSTANCE=git-rockylinux-8-tiamat-py3
     # - env: INSTANCE=git-debian-10-master-py3
     - env: INSTANCE=deb-debian-10-master-py3
+    # - env: INSTANCE=domains-debian-10-master-py3
     # - env: INSTANCE=git-debian-9-master-py3
     - env: INSTANCE=deb-debian-9-master-py3
-    # - env: INSTANCE=git-ubuntu-2004-master-py3
-    # - env: INSTANCE=git-ubuntu-1804-master-py3
+    # - env: INSTANCE=domains-debian-9-master-py3
+    - env: INSTANCE=git-ubuntu-2004-master-py3
+    # - env: INSTANCE=domains-ubuntu-2004-master-py3
+    - env: INSTANCE=git-ubuntu-1804-master-py3
+    # - env: INSTANCE=domains-ubuntu-1804-master-py3
     # - env: INSTANCE=git-centos-8-master-py3
     - env: INSTANCE=rpm-centos-8-master-py3
     # - env: INSTANCE=git-centos-7-master-py3

@@ -528,12 +528,32 @@ suites:
         - path: test/integration/rpm
   - name: domains
     includes:
+      - debian-10-tiamat-py3
+      - debian-9-tiamat-py3
+      - ubuntu-2004-tiamat-py3
+      - ubuntu-1804-tiamat-py3
+      - debian-10-master-py3
+      - debian-9-master-py3
+      - ubuntu-2004-master-py3
+      - ubuntu-1804-master-py3
       - debian-10-3003-1-py3
+      - debian-9-3003-1-py3
+      - ubuntu-2004-3003-1-py3
+      - ubuntu-1804-3003-1-py3
+      - debian-10-3002-6-py3
+      - debian-9-3002-6-py3
+      - ubuntu-2004-3002-6-py3
+      - ubuntu-1804-3002-6-py3
+      - debian-10-3001-7-py3
+      - debian-9-3001-7-py3
+      - ubuntu-2004-3001-7-py3
+      - ubuntu-1804-3001-7-py3
+      - debian-10-3000-9-py3
+      - debian-9-3000-9-py3
+      - ubuntu-1804-3000-9-py3
+      - ubuntu-1804-3000-9-py2
     provisioner:
       dependencies:
-        - name: apt
-          repo: git
-          source: https://github.com/saltstack-formulas/apt-formula.git
         - name: states
           path: ./test/salt
       state_top:
