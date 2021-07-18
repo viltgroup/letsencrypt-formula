@@ -123,6 +123,7 @@ rubocop:
 ## Define the rest of the matrix based on Kitchen testing
 # Make sure the instances listed below match up with
 # the `platforms` defined in `kitchen.yml`
+# git-debian-11-tiamat-py3: {extends: '.test_instance'}
 # git-debian-10-tiamat-py3: {extends: '.test_instance'}
 domains-debian-10-tiamat-py3: {extends: '.test_instance'}
 # git-debian-9-tiamat-py3: {extends: '.test_instance'}
@@ -136,6 +137,9 @@ domains-ubuntu-2004-tiamat-py3: {extends: '.test_instance'}
 # git-oraclelinux-7-tiamat-py3: {extends: '.test_instance'}
 # git-almalinux-8-tiamat-py3: {extends: '.test_instance'}
 # git-rockylinux-8-tiamat-py3: {extends: '.test_instance'}
+# git-debian-11-master-py3: {extends: '.test_instance'}
+deb-debian-11-master-py3: {extends: '.test_instance'}
+# domains-debian-11-master-py3: {extends: '.test_instance'}
 # git-debian-10-master-py3: {extends: '.test_instance'}
 deb-debian-10-master-py3: {extends: '.test_instance'}
 # domains-debian-10-master-py3: {extends: '.test_instance'}
@@ -170,6 +174,7 @@ git-gentoo-stage3-systemd-master-py3: {extends: '.test_instance'}
 rpm-almalinux-8-master-py3: {extends: '.test_instance'}
 # git-rockylinux-8-master-py3: {extends: '.test_instance'}
 rpm-rockylinux-8-master-py3: {extends: '.test_instance'}
+# git-debian-11-3003-1-py3: {extends: '.test_instance'}
 # git-debian-10-3003-1-py3: {extends: '.test_instance'}
 # git-debian-9-3003-1-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-3003-1-py3: {extends: '.test_instance'}
@@ -187,6 +192,7 @@ rpm-rockylinux-8-master-py3: {extends: '.test_instance'}
 # git-arch-base-latest-3003-1-py3: {extends: '.test_instance'}
 # git-gentoo-stage3-latest-3003-1-py3: {extends: '.test_instance'}
 # git-gentoo-stage3-systemd-3003-1-py3: {extends: '.test_instance'}
+# git-debian-11-3002-6-py3: {extends: '.test_instance'}
 # git-debian-10-3002-6-py3: {extends: '.test_instance'}
 # git-debian-9-3002-6-py3: {extends: '.test_instance'}
 # git-ubuntu-2004-3002-6-py3: {extends: '.test_instance'}
