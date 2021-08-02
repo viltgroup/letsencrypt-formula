@@ -10,9 +10,9 @@ letsencrypt:
   _cli_path: /usr/bin/certbot
   # Only used for the pkg install method (install_method = package), internal var
   _default_pkg: certbot
-  # Only used for the git install methods (install_method = git)
+  # Only used for the git or pip install methods (install_method = (git|pip))
   cli_install_dir: /opt/letsencrypt
-  # Only used for the git install methods (install_method = git).
+  # Only used for the git or pip install methods (install_method = (git|pip)).
   # If you want to have specific version of certbot you can enable it. The
   # version value should match a certbot/certbot branch version: 0.30.x
   config_dir:

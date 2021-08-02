@@ -446,6 +446,24 @@ suites:
     verifier:
       inspec_tests:
         - path: test/integration/git
+  - name: pip
+    provisioner:
+      state_top:
+        base:
+          '*':
+            - letsencrypt._mapdata
+            - letsencrypt.install
+            - letsencrypt.config
+      pillars:
+        top.sls:
+          base:
+            '*':
+              - letsencrypt
+      pillars_from_files:
+        letsencrypt.sls: test/salt/pillar/pip.sls
+    verifier:
+      inspec_tests:
+        - path: test/integration/pip
   - name: deb
     includes:
       - debian-11-tiamat-py3

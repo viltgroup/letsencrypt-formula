@@ -38,5 +38,19 @@ letsencrypt-client:
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
   {%-   endif %}
+  {%- elif letsencrypt.install_method == 'pip' %}
+  pkg.installed:
+    - pkgs:
+      - python3
+      - virtualenv
+  virtualenv.managed:
+    - name: {{ letsencrypt.cli_install_dir }}
+    - python: python3
+    - pip_pkgs:
+  {%-   if letsencrypt.version is defined and letsencrypt.version|length %}
+      - certbot=={{ letsencrypt.version }}
+  {%-   else %}
+      - certbot
+  {%-   endif %}
   {%- endif %}
     - reload_modules: True

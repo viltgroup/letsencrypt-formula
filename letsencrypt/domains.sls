@@ -15,7 +15,11 @@
 {% else %}
   {% set check_cert_cmd = '/usr/local/bin/check_letsencrypt_cert.sh' %}
   {% set renew_cert_cmd = '/usr/local/bin/renew_letsencrypt_cert.sh' %}
-  {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/letsencrypt-auto' %}
+  {% if letsencrypt.install_method == 'pip' %}
+    {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/bin/certbot' %}
+  {% else %}
+    {% set create_cert_cmd = letsencrypt.cli_install_dir ~ '/letsencrypt-auto' %}
+  {% endif %}
 
   {% set old_check_cert_cmd_state = 'managed' %}
   {% set old_renew_cert_cmd_state = 'managed' %}
