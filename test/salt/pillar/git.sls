@@ -2,7 +2,7 @@
 # vim: ft=yaml
 ---
 letsencrypt:
-  use_package: false
+  install_method: git
   version: 0.26.x
   config: |
     server = https://acme-staging.api.letsencrypt.org/directory

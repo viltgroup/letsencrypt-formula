@@ -3,7 +3,7 @@
 
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 
-{% if letsencrypt.use_package %}
+{% if letsencrypt.install_method == 'package' %}
 letsencrypt-service-timer:
   service.running:
     - name: {{ letsencrypt.service }}

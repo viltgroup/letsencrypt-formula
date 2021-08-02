@@ -2,7 +2,7 @@
 # vim: ft=yaml
 ---
 letsencrypt:
-  use_package: true
+  install_method: package
   config:
     server: https://acme-staging.api.letsencrypt.org/directory
     email: saltstack-letsencrypt-formula@example.com

@@ -4,7 +4,7 @@
 RedHat:
   service: certbot-renew.timer
 FreeBSD:
-  # Only used for the pkg install method (use_package: true), internal var
+  # Only used for the pkg install method (install_method: package), internal var
   _cli_path: /usr/local/bin/certbot
 Gentoo:
   git_pkg: dev-vcs/git

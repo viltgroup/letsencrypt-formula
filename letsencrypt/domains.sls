@@ -3,7 +3,7 @@
 
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 
-{% if letsencrypt.use_package %}
+{% if letsencrypt.install_method == 'package' %}
   {% set check_cert_cmd = letsencrypt._cli_path ~ ' certificates --cert-name' %}
   {% set renew_cert_cmd = letsencrypt._cli_path ~ ' renew' %}
   {% set create_cert_cmd = letsencrypt._cli_path %}
@@ -63,11 +63,11 @@ create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
           {{ installer }} \
           --cert-name {{ setname }} \
           -d {{ domainlist|join(' -d ') }}
-      {% if not letsencrypt.use_package %}
+      {% if letsencrypt.install_method != 'package' %}
     - cwd: {{ letsencrypt.cli_install_dir }}
       {% endif %}
     - unless:
-      {% if letsencrypt.use_package %}
+      {% if letsencrypt.install_method == 'package' %}
       - fun: cmd.run
         python_shell: true
         cmd: |
@@ -78,7 +78,7 @@ create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}:
       - {{ check_cert_cmd }} {{ setname }} {{ domainlist | join(' ') }}
       {% endif %}
     - require:
-      {% if letsencrypt.use_package %}
+      {% if letsencrypt.install_method == 'package' %}
       - pkg: letsencrypt-client
       {% else %}
       - file: {{ check_cert_cmd }}
@@ -95,7 +95,7 @@ letsencrypt-crontab-{{ setname }}-{{ domainlist[0] }}:
     - identifier: letsencrypt-{{ setname }}-{{ domainlist[0] }}
     - require:
       - cmd: create-initial-cert-{{ setname }}-{{ domainlist | join('+') }}
-      {% if letsencrypt.use_package %}
+      {% if letsencrypt.install_method == 'package' %}
       - pkg: letsencrypt-client
       {% else %}
       - file: {{ renew_cert_cmd }}

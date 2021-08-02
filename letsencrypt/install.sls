@@ -3,7 +3,7 @@
 {%- from "letsencrypt/map.jinja" import letsencrypt with context %}
 
 {#- Use empty default for `grains.osfinger`, which isn't available in all distros #}
-{%- if letsencrypt.use_package and
+{%- if letsencrypt.install_method == 'package' and
        grains.osfinger|d('') == 'Amazon Linux-2' %}
 {%-   set rhel_ver = '7' %}
 letsencrypt_external_repo:
@@ -20,11 +20,11 @@ letsencrypt_external_repo:
 {%- endif %}
 
 letsencrypt-client:
-  {%- if letsencrypt.use_package %}
+  {%- if letsencrypt.install_method == 'package' %}
     {%- set pkgs = letsencrypt.pkgs or [letsencrypt._default_pkg] %}
   pkg.installed:
     - pkgs: {{ pkgs | json }}
-  {%- else %}
+  {%- elif letsencrypt.install_method == 'git' %}
   pkg.installed:
     - name: {{ letsencrypt.git_pkg }}
   {%-   if letsencrypt.version is defined and letsencrypt.version|length %}

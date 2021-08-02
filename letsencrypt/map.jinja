@@ -24,3 +24,12 @@
     ),
     base='letsencrypt')
 %}
+
+{# Make backwards compatible with use_package #}
+{% if letsencrypt.use_package is defined %}
+  {% if letsencrypt.use_package %}
+    {{ letsencrypt | set_dict_key_value('install_method', 'package') }}
+  {% else %}
+    {{ letsencrypt | set_dict_key_value('install_method', 'git') }}
+  {% endif %}
+{% endif %}
