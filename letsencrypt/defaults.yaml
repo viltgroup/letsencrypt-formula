@@ -23,6 +23,9 @@ letsencrypt:
   # Only used for the pip install method (install_method = pip). Can be used to
   # install plugins for certbot.
   pip_pkgs: []
+  # Only used for the pip install method (install_method = pip), internal var
+  virtualenv_pkg:
+    - python3-virtualenv
   config:
     server: https://acme-v02.api.letsencrypt.org/directory
     agree-tos: true

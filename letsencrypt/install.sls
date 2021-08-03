@@ -40,9 +40,7 @@ letsencrypt-client:
   {%-   endif %}
   {%- elif letsencrypt.install_method == 'pip' %}
   pkg.installed:
-    - pkgs:
-      - python3
-      - virtualenv
+    - pkgs: {{ letsencrypt.virtualenv_pkg | json }}
   virtualenv.managed:
     - name: {{ letsencrypt.cli_install_dir }}
     - python: python3
