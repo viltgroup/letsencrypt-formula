@@ -201,6 +201,18 @@ jobs:
     # - env: INSTANCE=git-gentoo-stage3-systemd-3000-9-py3
     # - env: INSTANCE=git-ubuntu-1804-3000-9-py2
     # - env: INSTANCE=git-arch-base-latest-3000-9-py2
+    - env: INSTANCE=pip-debian-10-tiamat-py3
+    - env: INSTANCE=pip-ubuntu-2004-tiamat-py3
+    - env: INSTANCE=pip-debian-11-master-py3
+    - env: INSTANCE=pip-debian-10-master-py3
+    - env: INSTANCE=pip-debian-9-master-py3
+    - env: INSTANCE=pip-ubuntu-2004-master-py3
+    - env: INSTANCE=pip-centos-8-master-py3
+    - env: INSTANCE=pip-opensuse-leap-153-master-py3
+    - env: INSTANCE=pip-opensuse-leap-152-master-py3
+    - env: INSTANCE=pip-arch-base-latest-master-py3
+    - env: INSTANCE=pip-gentoo-stage-3-latest-master-py3
+    - env: INSTANCE=pip-gentoo-stage-3-systemd-master-py3
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
