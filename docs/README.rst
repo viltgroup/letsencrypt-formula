@@ -62,6 +62,8 @@ or the `epel-formula <https://github.com/saltstack-formulas/epel-formula>`_ to m
 
 If `install_method` is `git` it installs and configures the letsencrypt cli from git, creates the requested certificates and installs renewal cron job.
 
+If `install_method` is `pip` it installs and configures the letsencrypt cli from pip, creates the requested certificates and installs renewwal cron job. Allows plugin installation with `pip_pkgs`.
+
 ** WARNING **
 If you set `install_method` to `package`, it will:
 
