@@ -20,3 +20,7 @@ describe file('/etc/letsencrypt/cli.ini') do
   its('content') { should match 'authenticator = standalone' }
   its('content') { should match 'File managed by Salt' }
 end
+
+describe command('/opt/letsencrypt/bin/certbot plugins') do
+  its('stdout') { should match(/dns-powerdns/) }
+end

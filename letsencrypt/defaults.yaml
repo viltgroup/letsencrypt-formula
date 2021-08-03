@@ -20,6 +20,9 @@ letsencrypt:
     user: root
     group: root
     mode: 755
+  # Only used for the pip install method (install_method = pip). Can be used to
+  # install plugins for certbot.
+  pip_pkgs: []
   config:
     server: https://acme-v02.api.letsencrypt.org/directory
     agree-tos: true

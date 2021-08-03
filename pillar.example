@@ -19,6 +19,11 @@ letsencrypt:
   # If you want to have specific version of certbot you can enable it. The
   # version value should match a certbot/certbot branch.
   version: 0.30.x
+  # Only used for the pip install method (install_method = pip). Can be used to
+  # install plugins for certbot. Default: []
+  pip_pkgs:
+    - certbot-dns-azure
+    - certbot-dns-powerdns
   # Subcommand used for certificates' first generation cmd ( run | certonly | renew )
   create_init_cert_subcmd: certonly
   # Any parameter from the cli can be specified in the config file

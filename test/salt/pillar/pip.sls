@@ -3,7 +3,9 @@
 ---
 letsencrypt:
   install_method: pip
-  version: 0.26.1
+  version: 1.7.0
+  pip_pkgs:
+    - certbot-dns-powerdns
   config: |
     server = https://acme-staging.api.letsencrypt.org/directory
     email = saltstack-letsencrypt-formula@example.com

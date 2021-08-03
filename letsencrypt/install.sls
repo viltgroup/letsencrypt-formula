@@ -52,5 +52,8 @@ letsencrypt-client:
   {%-   else %}
       - certbot
   {%-   endif %}
+  {%-   for pkg in letsencrypt.pip_pkgs %}
+      - {{ pkg }}
+  {%-   endfor %}
   {%- endif %}
     - reload_modules: True
