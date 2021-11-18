@@ -1,5 +1,34 @@
 # Changelog
 
+# [3.2.0](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v3.1.0...v3.2.0) (2021-11-18)
+
+
+### Code Refactoring
+
+* **install:** adapt virtualenv package to OS ([5b92061](https://github.com/saltstack-formulas/letsencrypt-formula/commit/5b920617e89c382059be16c4367a2e15361101ef))
+* **install:** change use_package to install_method ([852f110](https://github.com/saltstack-formulas/letsencrypt-formula/commit/852f110df1e72126f517eab48f7475c828025cf5))
+
+
+### Continuous Integration
+
+* **gemfile+lock:** use `ssf` customised `inspec` repo [skip ci] ([ab94eb5](https://github.com/saltstack-formulas/letsencrypt-formula/commit/ab94eb5d2e8793ed7b2c406cc38aa7b1aa29e6b7))
+* **kitchen:** move `provisioner` block & update `run_command` [skip ci] ([65772ab](https://github.com/saltstack-formulas/letsencrypt-formula/commit/65772abcea0c1ade2fdb54449c5810aa4370b421))
+* **kitchen+ci:** update with latest `3003.2` pre-salted images [skip ci] ([5aac5bd](https://github.com/saltstack-formulas/letsencrypt-formula/commit/5aac5bd8202adf3a35c5c76aa0b96f4a03dbd9ce))
+* **kitchen+ci:** update with latest CVE pre-salted images [skip ci] ([68d6aab](https://github.com/saltstack-formulas/letsencrypt-formula/commit/68d6aab249e87efa1a478b0a919b6b77a090ffd4))
+* add Debian 11 Bullseye & update `yamllint` configuration [skip ci] ([46b391d](https://github.com/saltstack-formulas/letsencrypt-formula/commit/46b391d9e161a43efe3a658fbad6a70b53bb250a))
+* standardise structure [skip ci] ([650f5e4](https://github.com/saltstack-formulas/letsencrypt-formula/commit/650f5e43a40b8d5328a8abecc6d7ecea29cf2592))
+
+
+### Documentation
+
+* **readme:** document pip installation method ([288140f](https://github.com/saltstack-formulas/letsencrypt-formula/commit/288140f9c8b17f169fd788dc0aee9964d5b30328))
+
+
+### Features
+
+* install certbot with pip ([756a272](https://github.com/saltstack-formulas/letsencrypt-formula/commit/756a2722e05dfabc8ad67e502aeef76d0b950018))
+* **pip:** allow plugin installation ([ea3b3e0](https://github.com/saltstack-formulas/letsencrypt-formula/commit/ea3b3e04fe5ba3942448839461571e5b202a438a))
+
 # [3.1.0](https://github.com/saltstack-formulas/letsencrypt-formula/compare/v3.0.0...v3.1.0) (2021-07-02)
 
 
