@@ -2,7 +2,11 @@
 {% from "letsencrypt/map.jinja" import letsencrypt with context %}
 COMMON_NAME="$1"
 
+{% if letsencrypt.install_method == 'pip' %}
+{{ letsencrypt.cli_install_dir }}/bin/certbot renew --non-interactive || exit 1
+{% else %}
 {{ letsencrypt.cli_install_dir }}/letsencrypt-auto renew --non-interactive || exit 1
+{% endif %}
   cat {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/fullchain.pem \
   {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/privkey.pem \
   > {{ letsencrypt.config_dir.path }}/live/${COMMON_NAME}/fullchain-privkey.pem || exit 1

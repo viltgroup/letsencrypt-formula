@@ -55,15 +55,17 @@ Available states
 
 This is a shortcut for letsencrypt.install letsencrypt.config and letsencrypt.domains.
 
-If `use_package` is `True` (the default), the formula will try to install the *certbot* package from your Distro's repo.
+if `install_method` is `package` (the default), the formula will try to install the *certbot* package from your Distro's repo.
 Keep in mind that most distros don't have a package available by default: Ie, previous stable Debian (Stretch) requires a backports repo installed.
 Centos 7 requires EPEL, etc. This formula **DOES NOT** manage these repositories. Use the `apt-formula <https://github.com/saltstack-formulas/apt-formula>`_
 or the `epel-formula <https://github.com/saltstack-formulas/epel-formula>`_ to manage them.
 
-If `use_package` is `False` it installs and configures the letsencrypt cli from git, creates the requested certificates and installs renewal cron job.
+If `install_method` is `git` it installs and configures the letsencrypt cli from git, creates the requested certificates and installs renewal cron job.
+
+If `install_method` is `pip` it installs and configures the letsencrypt cli from pip, creates the requested certificates and installs renewwal cron job. Allows plugin installation with `pip_pkgs`.
 
 ** WARNING **
-If you set `use_package` to `True`, it will:
+If you set `install_method` to `package`, it will:
 
 * Delete all certbot's crons if they exist from a previous git-based installation (as the package uses a
   systemd's timer unit to renew all the certs)

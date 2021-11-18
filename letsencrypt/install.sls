@@ -3,7 +3,7 @@
 {%- from "letsencrypt/map.jinja" import letsencrypt with context %}
 
 {#- Use empty default for `grains.osfinger`, which isn't available in all distros #}
-{%- if letsencrypt.use_package and
+{%- if letsencrypt.install_method == 'package' and
        grains.osfinger|d('') == 'Amazon Linux-2' %}
 {%-   set rhel_ver = '7' %}
 letsencrypt_external_repo:
@@ -20,11 +20,11 @@ letsencrypt_external_repo:
 {%- endif %}
 
 letsencrypt-client:
-  {%- if letsencrypt.use_package %}
+  {%- if letsencrypt.install_method == 'package' %}
     {%- set pkgs = letsencrypt.pkgs or [letsencrypt._default_pkg] %}
   pkg.installed:
     - pkgs: {{ pkgs | json }}
-  {%- else %}
+  {%- elif letsencrypt.install_method == 'git' %}
   pkg.installed:
     - name: {{ letsencrypt.git_pkg }}
   {%-   if letsencrypt.version is defined and letsencrypt.version|length %}
@@ -38,5 +38,20 @@ letsencrypt-client:
     - target: {{ letsencrypt.cli_install_dir }}
     - force_reset: True
   {%-   endif %}
+  {%- elif letsencrypt.install_method == 'pip' %}
+  pkg.installed:
+    - pkgs: {{ letsencrypt.virtualenv_pkg | json }}
+  virtualenv.managed:
+    - name: {{ letsencrypt.cli_install_dir }}
+    - python: python3
+    - pip_pkgs:
+  {%-   if letsencrypt.version is defined and letsencrypt.version|length %}
+      - certbot=={{ letsencrypt.version }}
+  {%-   else %}
+      - certbot
+  {%-   endif %}
+  {%-   for pkg in letsencrypt.pip_pkgs %}
+      - {{ pkg }}
+  {%-   endfor %}
   {%- endif %}
     - reload_modules: True
