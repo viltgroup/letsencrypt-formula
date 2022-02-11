@@ -163,11 +163,11 @@ test-salt-states-install-letsencrypt-test-server-pebble-systemd-service-file-man
       - file: test-salt-states-install-letsencrypt-test-server-pebble-config-file-managed
       - file: test-salt-states-install-letsencrypt-test-server-pebble-env-vars-service-file-managed
 
-test-salt-states-install-letsencrypt-test-server-systemd-service-cmd-wait:
-  cmd.wait:
+test-salt-states-install-letsencrypt-test-server-systemd-service-cmd-run:
+  cmd.run:
     - name: systemctl daemon-reload
     - runas: root
-    - watch:
+    - onchanges:
       - file: test-salt-states-install-letsencrypt-test-server-pebble-systemd-service-file-managed
     - require_in:
       - service: test-salt-states-install-letsencrypt-test-server-pebble-service-running
