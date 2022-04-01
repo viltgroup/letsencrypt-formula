@@ -121,6 +121,9 @@ jobs:
     # - env: INSTANCE=git-centos-7-master-py3
     - env: INSTANCE=rpm-centos-7-master-py3
     # - env: INSTANCE=pip-centos-7-master-py3
+    # - env: INSTANCE=git-fedora-35-master-py3
+    - env: INSTANCE=rpm-fedora-35-master-py3
+    # - env: INSTANCE=pip-fedora-35-master-py3
     # - env: INSTANCE=git-fedora-34-master-py3
     - env: INSTANCE=rpm-fedora-34-master-py3
     # - env: INSTANCE=pip-fedora-34-master-py3
@@ -156,6 +159,7 @@ jobs:
     # - env: INSTANCE=git-ubuntu-1804-3004-0-py3
     # - env: INSTANCE=git-centos-stream8-3004-0-py3
     # - env: INSTANCE=git-centos-7-3004-0-py3
+    # - env: INSTANCE=git-fedora-35-3004-0-py3
     # - env: INSTANCE=git-fedora-34-3004-0-py3
     # - env: INSTANCE=git-opensuse-leap-153-3004-0-py3
     # - env: INSTANCE=git-opensuse-tmbl-latest-3004-0-py3
