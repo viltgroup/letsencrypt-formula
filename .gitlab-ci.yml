@@ -169,6 +169,9 @@ rpm-centos-stream8-master-py3: {extends: '.test_instance_failure_permitted'}
 # git-centos-7-master-py3: {extends: '.test_instance'}
 rpm-centos-7-master-py3: {extends: '.test_instance'}
 # pip-centos-7-master-py3: {extends: '.test_instance'}
+# git-fedora-36-master-py3: {extends: '.test_instance_failure_permitted'}
+rpm-fedora-36-master-py3: {extends: '.test_instance_failure_permitted'}
+# pip-fedora-36-master-py3: {extends: '.test_instance_failure_permitted'}
 # git-fedora-35-master-py3: {extends: '.test_instance'}
 rpm-fedora-35-master-py3: {extends: '.test_instance'}
 # pip-fedora-35-master-py3: {extends: '.test_instance'}
@@ -207,6 +210,7 @@ rpm-rockylinux-8-master-py3: {extends: '.test_instance'}
 # git-ubuntu-1804-3004-1-py3: {extends: '.test_instance'}
 # git-centos-stream8-3004-1-py3: {extends: '.test_instance_failure_permitted'}
 # git-centos-7-3004-1-py3: {extends: '.test_instance'}
+# git-fedora-36-3004-1-py3: {extends: '.test_instance_failure_permitted'}
 # git-fedora-35-3004-1-py3: {extends: '.test_instance'}
 # git-fedora-34-3004-1-py3: {extends: '.test_instance'}
 # git-amazonlinux-2-3004-1-py3: {extends: '.test_instance'}
