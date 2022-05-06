@@ -87,6 +87,8 @@ jobs:
     # - env: INSTANCE=git-debian-10-tiamat-py3
     - env: INSTANCE=domains-debian-10-tiamat-py3
     # - env: INSTANCE=git-debian-9-tiamat-py3
+    # - env: INSTANCE=git-ubuntu-2204-tiamat-py3
+    - env: INSTANCE=domains-ubuntu-2204-tiamat-py3
     # - env: INSTANCE=git-ubuntu-2004-tiamat-py3
     - env: INSTANCE=domains-ubuntu-2004-tiamat-py3
     # - env: INSTANCE=git-ubuntu-1804-tiamat-py3
@@ -109,6 +111,9 @@ jobs:
     - env: INSTANCE=deb-debian-9-master-py3
     # - env: INSTANCE=domains-debian-9-master-py3
     # - env: INSTANCE=pip-debian-9-master-py3
+    - env: INSTANCE=git-ubuntu-2204-master-py3
+    # - env: INSTANCE=domains-ubuntu-2204-master-py3
+    # - env: INSTANCE=pip-ubuntu-2204-master-py3
     - env: INSTANCE=git-ubuntu-2004-master-py3
     # - env: INSTANCE=domains-ubuntu-2004-master-py3
     # - env: INSTANCE=pip-ubuntu-2004-master-py3
@@ -158,6 +163,7 @@ jobs:
     # - env: INSTANCE=git-debian-11-3004-1-py3
     # - env: INSTANCE=git-debian-10-3004-1-py3
     # - env: INSTANCE=git-debian-9-3004-1-py3
+    # - env: INSTANCE=git-ubuntu-2204-3004-1-py3
     # - env: INSTANCE=git-ubuntu-2004-3004-1-py3
     # - env: INSTANCE=git-ubuntu-1804-3004-1-py3
     # - env: INSTANCE=git-centos-stream8-3004-1-py3
