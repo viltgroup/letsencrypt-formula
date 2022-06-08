@@ -132,9 +132,6 @@ jobs:
     # - env: INSTANCE=git-fedora-35-master-py3
     - env: INSTANCE=rpm-fedora-35-master-py3
     # - env: INSTANCE=pip-fedora-35-master-py3
-    # - env: INSTANCE=git-fedora-34-master-py3
-    - env: INSTANCE=rpm-fedora-34-master-py3
-    # - env: INSTANCE=pip-fedora-34-master-py3
     - env: INSTANCE=git-opensuse-leap-153-master-py3
     # - env: INSTANCE=pip-opensuse-leap-153-master-py3
     - env: INSTANCE=git-opensuse-tmbl-latest-master-py3
@@ -170,7 +167,6 @@ jobs:
     # - env: INSTANCE=git-centos-7-3004-1-py3
     # - env: INSTANCE=git-fedora-36-3004-1-py3
     # - env: INSTANCE=git-fedora-35-3004-1-py3
-    # - env: INSTANCE=git-fedora-34-3004-1-py3
     # - env: INSTANCE=git-amazonlinux-2-3004-1-py3
     # - env: INSTANCE=git-oraclelinux-8-3004-1-py3
     # - env: INSTANCE=git-oraclelinux-7-3004-1-py3
@@ -191,14 +187,6 @@ jobs:
     # - env: INSTANCE=git-oraclelinux-8-3003-4-py3
     # - env: INSTANCE=git-oraclelinux-7-3003-4-py3
     # - env: INSTANCE=git-almalinux-8-3003-4-py3
-    # - env: INSTANCE=git-debian-10-3002-8-py3
-    # - env: INSTANCE=git-debian-9-3002-8-py3
-    # - env: INSTANCE=git-ubuntu-2004-3002-8-py3
-    # - env: INSTANCE=git-ubuntu-1804-3002-8-py3
-    # - env: INSTANCE=git-centos-7-3002-8-py3
-    # - env: INSTANCE=git-amazonlinux-2-3002-8-py3
-    # - env: INSTANCE=git-oraclelinux-8-3002-8-py3
-    # - env: INSTANCE=git-oraclelinux-7-3002-8-py3
 
     ## Define the release stage that runs `semantic-release`
     - stage: 'release'
