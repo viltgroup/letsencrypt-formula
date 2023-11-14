@@ -5,7 +5,7 @@ CERT_NAME=$1
 shift
 for DOMAIN in "$@"
 do
-    openssl x509 -in {{ letsencrypt.config_dir.path }}/live/$CERT_NAME/cert.pem -noout -text | grep DNS:${DOMAIN} > /dev/null || exit 1
+    openssl x509 -in {{ letsencrypt.config_dir.path }}/live/$CERT_NAME/cert.pem -noout -text | grep -F DNS:${DOMAIN} > /dev/null || exit 1
 done
 CERT=$(date -d "$(openssl x509 -in {{ letsencrypt.config_dir.path }}/live/$CERT_NAME/cert.pem -enddate -noout | cut -d'=' -f2)" "+%s")
 CURRENT=$(date "+%s")
